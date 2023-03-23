@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/athlete_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/athlete_view_background"
+        android:layout_width="310dp"
+        android:layout_height="410dp"
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/blue_700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/athlete_view_foreground"
+        android:layout_width="300dp"
+        android:layout_height="365dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/blue_500"
+        app:layout_constraintBottom_toBottomOf="@+id/athlete_view_background"
+        app:layout_constraintEnd_toEndOf="@+id/athlete_view_background"
+        app:layout_constraintStart_toStartOf="@+id/athlete_view_background"
+        app:layout_constraintTop_toTopOf="@+id/athlete_view_background"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/athlete_view_name"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="25dp"
+        android:background="@null"
+        android:ems="10"
+        android:fontFamily="@font/lato"
+        android:gravity="center"
+        android:text="@string/name"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/athlete_view_foreground"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/athlete_view_foreground"
+        app:layout_constraintTop_toBottomOf="@+id/athlete_view_pfp" />
+
+    <ImageView
+        android:id="@+id/athlete_view_pfp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:contentDescription="@string/profile_picture"
+        app:layout_constraintBottom_toBottomOf="@+id/athlete_view_foreground"
+        app:layout_constraintEnd_toEndOf="@+id/athlete_view_foreground"
+        app:layout_constraintStart_toStartOf="@+id/athlete_view_foreground"
+        app:layout_constraintTop_toTopOf="@+id/athlete_view_foreground"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/profile_picture" />
+
+    <ImageButton
+        android:id="@+id/athlete_view_edit"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@null"
+        android:contentDescription="@string/athlete_edit_delete"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="@+id/athlete_view_background"
+        app:layout_constraintTop_toTopOf="@+id/athlete_view_background"
+        app:srcCompat="@drawable/edit"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/athlete_view_records"
+        style="@style/Theme.Runaway.Button"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:text="@string/athlete_view_records"
+        app:layout_constraintBottom_toBottomOf="@+id/athlete_view_foreground"
+        app:layout_constraintEnd_toEndOf="@+id/athlete_view_foreground"
+        app:layout_constraintStart_toStartOf="@+id/athlete_view_foreground"
+        app:layout_constraintTop_toBottomOf="@+id/athlete_view_name" />
+
+    <ImageButton
+        android:id="@+id/athlete_view_close"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="@+id/athlete_view_background"
+        app:layout_constraintTop_toTopOf="@+id/athlete_view_background"
+        app:srcCompat="@drawable/x" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

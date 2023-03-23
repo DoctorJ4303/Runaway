@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Runaway</string>
+    <string name="empty"></string>
+
+    <!--Button Descriptions-->
+    <string name="main_athlete_list">Athlete List</string>
+    <string name="athlete_list_back">Back</string>
+    <string name="athlete_list_add">Add Athlete</string>
+    <string name="athlete_add_save">CREATE ATHLETE</string>
+    <string name="athlete_add_records">ADD RECORDS</string>
+    <string name="athlete_edit_save">SAVE ATHLETE</string>
+    <string name="athlete_edit_records">EDIT RECORDS</string>
+    <string name="athlete_edit_delete">Delete Athlete</string>
+    <string name="athlete_view_records">VIEW RECORDS</string>
+
+    <!--Image Descriptions-->
+    <string name="main_logo">Logo</string>
+    <string name="profile_picture">Athlete Profile Picture</string>
+
+    <!--TextViews-->
+    <string name="athlete_list_title">ATHLETES</string>
+    <string name="athlete_edit_title">EDIT ATHLETE</string>
+    <string name="distance">Distance</string>
+    <string name="time">Time</string>
+
+    <!--Text Input Hints-->
+    <string name="name">Name</string>
+</resources>

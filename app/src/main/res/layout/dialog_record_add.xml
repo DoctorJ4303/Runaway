@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/record_add"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/record_add_background"
+        android:layout_width="310dp"
+        android:layout_height="155dp"
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/blue_700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/record_add_foreground"
+        android:layout_width="300dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/blue_500"
+        app:layout_constraintBottom_toBottomOf="@+id/record_add_background"
+        app:layout_constraintEnd_toEndOf="@+id/record_add_background"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/record_add_background"
+        app:layout_constraintTop_toTopOf="@+id/record_add_background"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/record_add_distance"
+        android:layout_width="139dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:autofillHints=""
+        android:background="@drawable/sharp_corners"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/distance"
+        android:importantForAutofill="no"
+        android:inputType="number"
+        android:textColorHint="#CCFFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/record_add_cancel"
+        app:layout_constraintEnd_toEndOf="@+id/record_add_cancel"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/record_add_foreground"
+        app:layout_constraintTop_toTopOf="@+id/record_add_foreground" />
+
+    <EditText
+        android:id="@+id/record_add_time"
+        android:layout_width="139dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:autofillHints=""
+        android:background="@drawable/sharp_corners"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/time"
+        android:importantForAutofill="no"
+        android:inputType="time|number"
+        android:textColorHint="#CCFFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/record_add_foreground"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/record_add_foreground"
+        app:layout_constraintTop_toTopOf="@+id/record_add_foreground" />
+
+    <Button
+        android:id="@+id/record_add_save"
+        style="@style/Theme.Runaway.ButtonSharp"
+        android:layout_width="153dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="-2dp"
+        android:layout_marginBottom="-2dp"
+        android:text="OK"
+        app:layout_constraintBottom_toBottomOf="@+id/record_add_foreground"
+        app:layout_constraintEnd_toEndOf="@+id/record_add_foreground" />
+
+    <Button
+        android:id="@+id/record_add_cancel"
+        style="@style/Theme.Runaway.ButtonSharp"
+        android:layout_width="153dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="-2dp"
+        android:layout_marginBottom="-2dp"
+        android:text="CANCEL"
+        app:layout_constraintBottom_toBottomOf="@+id/record_add_foreground"
+        app:layout_constraintStart_toStartOf="@+id/record_add_foreground" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/athlete_add"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/athlete_edit_background"
+        android:layout_width="310dp"
+        android:layout_height="410dp"
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/blue_700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.424" />
+
+    <View
+        android:id="@+id/athlete_edit_foreground"
+        android:layout_width="300dp"
+        android:layout_height="365dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/blue_500"
+        app:layout_constraintBottom_toBottomOf="@+id/athlete_edit_background"
+        app:layout_constraintEnd_toEndOf="@+id/athlete_edit_background"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/athlete_edit_background"
+        app:layout_constraintTop_toTopOf="@+id/athlete_edit_background"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/athlete_edit_name"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="13dp"
+        android:autofillHints=""
+        android:backgroundTint="#CCFFFFFF"
+        android:ems="10"
+        android:fontFamily="@font/lato"
+        android:hint="@string/name"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHint="#CCFFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/athlete_edit_foreground"
+        app:layout_constraintEnd_toEndOf="@+id/athlete_edit_foreground"
+        app:layout_constraintStart_toStartOf="@+id/athlete_edit_foreground"
+        app:layout_constraintTop_toBottomOf="@+id/athlete_edit_pfp"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/athlete_edit_pfp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:contentDescription="@string/profile_picture"
+        app:layout_constraintBottom_toBottomOf="@+id/athlete_edit_foreground"
+        app:layout_constraintEnd_toEndOf="@+id/athlete_edit_foreground"
+        app:layout_constraintStart_toStartOf="@+id/athlete_edit_foreground"
+        app:layout_constraintTop_toTopOf="@+id/athlete_edit_foreground"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/profile_picture" />
+
+    <ImageButton
+        android:id="@+id/athlete_edit_delete"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@null"
+        android:contentDescription="@string/athlete_edit_delete"
+        android:scaleType="centerInside"
+        app:layout_constraintStart_toStartOf="@+id/athlete_edit_background"
+        app:layout_constraintTop_toTopOf="@+id/athlete_edit_background"
+        app:srcCompat="@drawable/delete"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <Button
+        android:id="@+id/athlete_edit_save"
+        style="@style/Theme.Runaway.Button"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginBottom="13dp"
+        android:text="@string/athlete_edit_save"
+        app:layout_constraintBottom_toBottomOf="@+id/athlete_edit_foreground"
+        app:layout_constraintEnd_toEndOf="@+id/athlete_edit_foreground"
+        app:layout_constraintStart_toStartOf="@+id/athlete_edit_foreground"
+        app:layout_constraintTop_toBottomOf="@+id/athlete_edit_records"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/athlete_edit_records"
+        style="@style/Theme.Runaway.Button"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="13dp"
+        android:text="@string/athlete_edit_records"
+        app:layout_constraintBottom_toBottomOf="@+id/athlete_edit_foreground"
+        app:layout_constraintEnd_toEndOf="@+id/athlete_edit_foreground"
+        app:layout_constraintStart_toStartOf="@+id/athlete_edit_foreground"
+        app:layout_constraintTop_toBottomOf="@+id/athlete_edit_name"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/athlete_edit_title"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:fontFamily="@font/lato"
+        android:gravity="center"
+        android:text="@string/athlete_edit_title"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/athlete_edit_background"
+        app:layout_constraintStart_toStartOf="@+id/athlete_edit_background"
+        app:layout_constraintTop_toTopOf="@+id/athlete_edit_background" />
+
+    <ImageButton
+        android:id="@+id/athlete_edit_close"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="1dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="@+id/athlete_edit_background"
+        app:layout_constraintTop_toTopOf="@+id/athlete_edit_background"
+        app:srcCompat="@drawable/x" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

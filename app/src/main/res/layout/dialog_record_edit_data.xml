@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/record_edit_data"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/record_edit_data_background"
+        android:layout_width="310dp"
+        android:layout_height="155dp"
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/blue_700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/record_edit_data_foreground"
+        android:layout_width="300dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/blue_500"
+        app:layout_constraintBottom_toBottomOf="@+id/record_edit_data_background"
+        app:layout_constraintEnd_toEndOf="@+id/record_edit_data_background"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/record_edit_data_background"
+        app:layout_constraintTop_toTopOf="@+id/record_edit_data_background"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/record_edit_data_time"
+        android:layout_width="139dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:autofillHints=""
+        android:background="@drawable/sharp_corners"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/time"
+        android:importantForAutofill="no"
+        android:inputType="time|number"
+        android:textColorHint="#CCFFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/record_edit_data_foreground"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/record_edit_data_foreground"
+        app:layout_constraintTop_toTopOf="@+id/record_edit_data_foreground" />
+
+    <Button
+        android:id="@+id/record_edit_data_save"
+        style="@style/Theme.Runaway.ButtonSharp"
+        android:layout_width="153dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="-2dp"
+        android:layout_marginBottom="-2dp"
+        android:text="OK"
+        app:layout_constraintBottom_toBottomOf="@+id/record_edit_data_foreground"
+        app:layout_constraintEnd_toEndOf="@+id/record_edit_data_foreground" />
+
+    <Button
+        android:id="@+id/record_edit_data_cancel"
+        style="@style/Theme.Runaway.ButtonSharp"
+        android:layout_width="153dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="-2dp"
+        android:layout_marginBottom="-2dp"
+        android:text="CANCEL"
+        app:layout_constraintBottom_toBottomOf="@+id/record_edit_data_foreground"
+        app:layout_constraintStart_toStartOf="@+id/record_edit_data_foreground" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="139dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="42dp"
+        android:background="@drawable/sharp_corners"
+        android:fontFamily="@font/lato"
+        android:gravity="center"
+        android:text="@string/distance"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/record_edit_data_background"
+        app:layout_constraintTop_toTopOf="@+id/record_edit_data_background" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

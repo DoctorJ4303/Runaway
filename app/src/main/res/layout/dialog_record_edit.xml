@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/record_edit"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/record_edit_background"
+        android:layout_width="310dp"
+        android:layout_height="410dp"
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/blue_700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/record_edit_foreground"
+        android:layout_width="300dp"
+        android:layout_height="365dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/blue_500"
+        app:layout_constraintBottom_toBottomOf="@+id/record_edit_background"
+        app:layout_constraintEnd_toEndOf="@+id/record_edit_background"
+        app:layout_constraintStart_toStartOf="@+id/record_edit_background"
+        app:layout_constraintTop_toTopOf="@+id/record_edit_background"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/record_edit_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/lato"
+        android:text="@string/distance"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/record_edit_foreground"
+        app:layout_constraintEnd_toEndOf="@+id/record_edit_foreground"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/record_edit_foreground"
+        app:layout_constraintTop_toTopOf="@+id/record_edit_foreground"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/record_edit_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/lato"
+        android:text="@string/time"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/record_edit_foreground"
+        app:layout_constraintEnd_toEndOf="@+id/record_edit_foreground"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/record_edit_foreground"
+        app:layout_constraintTop_toTopOf="@+id/record_edit_foreground"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/record_edit_recycler_view"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/record_edit_foreground"
+        app:layout_constraintEnd_toEndOf="@+id/record_edit_foreground"
+        app:layout_constraintStart_toStartOf="@+id/record_edit_foreground"
+        app:layout_constraintTop_toTopOf="@+id/record_edit_foreground"
+        app:layout_constraintVertical_bias="0.0"
+        tools:itemCount="0" />
+
+    <ImageButton
+        android:id="@+id/record_edit_add"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="@+id/record_edit_background"
+        app:layout_constraintTop_toTopOf="@+id/record_edit_background"
+        app:srcCompat="@drawable/plus" />
+
+    <ImageButton
+        android:id="@+id/record_edit_back"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintStart_toStartOf="@+id/record_edit_background"
+        app:layout_constraintTop_toTopOf="@+id/record_edit_background"
+        app:srcCompat="@drawable/back_arrow" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

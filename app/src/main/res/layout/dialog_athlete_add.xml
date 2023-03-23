@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/athlete_add"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/athlete_add_background"
+        android:layout_width="310dp"
+        android:layout_height="410dp"
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/blue_700"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias=".5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/athlete_add_foreground"
+        android:layout_width="300dp"
+        android:layout_height="365dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/blue_500"
+        app:layout_constraintBottom_toBottomOf="@+id/athlete_add_background"
+        app:layout_constraintEnd_toEndOf="@+id/athlete_add_background"
+        app:layout_constraintStart_toStartOf="@+id/athlete_add_background"
+        app:layout_constraintTop_toTopOf="@+id/athlete_add_background"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/athlete_add_name"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="13dp"
+        android:autofillHints=""
+        android:backgroundTint="#CCFFFFFF"
+        android:ems="10"
+        android:fontFamily="@font/lato"
+        android:hint="@string/name"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHint="#CCFFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/athlete_add_foreground"
+        app:layout_constraintEnd_toEndOf="@+id/athlete_add_foreground"
+        app:layout_constraintStart_toStartOf="@+id/athlete_add_foreground"
+        app:layout_constraintTop_toBottomOf="@+id/athlete_add_pfp"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/athlete_add_pfp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:contentDescription="@string/profile_picture"
+        app:layout_constraintBottom_toBottomOf="@+id/athlete_add_foreground"
+        app:layout_constraintEnd_toEndOf="@+id/athlete_add_foreground"
+        app:layout_constraintStart_toStartOf="@+id/athlete_add_foreground"
+        app:layout_constraintTop_toTopOf="@+id/athlete_add_foreground"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/profile_picture" />
+
+    <Button
+        android:id="@+id/athlete_add_save"
+        style="@style/Theme.Runaway.Button"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="13dp"
+        android:text="@string/athlete_add_save"
+        app:layout_constraintBottom_toBottomOf="@+id/athlete_add_foreground"
+        app:layout_constraintEnd_toEndOf="@+id/athlete_add_foreground"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/athlete_add_foreground"
+        app:layout_constraintTop_toBottomOf="@+id/athlete_add_records" />
+
+    <Button
+        android:id="@+id/athlete_add_records"
+        style="@style/Theme.Runaway.Button"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="25dp"
+        android:text="@string/athlete_add_records"
+        app:layout_constraintBottom_toBottomOf="@+id/athlete_add_foreground"
+        app:layout_constraintEnd_toEndOf="@+id/athlete_add_foreground"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/athlete_add_foreground"
+        app:layout_constraintTop_toBottomOf="@+id/athlete_add_name"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/athlete_add_close"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="@+id/athlete_add_background"
+        app:layout_constraintTop_toTopOf="@+id/athlete_add_background"
+        app:srcCompat="@drawable/x" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
