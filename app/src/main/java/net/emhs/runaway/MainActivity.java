@@ -15,11 +15,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Click listener for going to athlete list activity
-        findViewById(R.id.main_athlete_list).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), AthleteListActivity.class));
-            }
-        });
+        findViewById(R.id.main_athlete_list).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), AthleteListActivity.class)));
     }
 }

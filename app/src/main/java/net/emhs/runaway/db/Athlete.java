@@ -1,8 +1,7 @@
 package net.emhs.runaway.db;
 
-import android.provider.ContactsContract;
-import android.text.format.DateFormat;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -10,12 +9,16 @@ import androidx.room.PrimaryKey;
 import net.emhs.runaway.util.MapConverter;
 import net.emhs.runaway.util.Time;
 
-import java.text.ParseException;
+import java.util.HashMap;
 import java.util.Map;
 
 
 @Entity(tableName = "athletes")
 public class Athlete {
+
+    public Athlete() {
+        records = MapConverter.fromMap(new HashMap<>());
+    }
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name="uid")
@@ -26,15 +29,9 @@ public class Athlete {
     @ColumnInfo(name="records")
     public String records;
 
-    public void addRecord(int distanceInput, Time time) throws ParseException, NumberFormatException {
+    public void addRecord(int distanceInput, @NonNull Time time) {
         Map<Integer, Time> map = MapConverter.fromString(records);
-
-        if (time != null) {
-            map.put(distanceInput, time);
-            records = MapConverter.fromMap(map);
-        } else {
-            throw new ParseException("Doesn't match any format", 0);
-        }
+        map.put(distanceInput, time);
+        records = MapConverter.fromMap(map);
     }
-
 }

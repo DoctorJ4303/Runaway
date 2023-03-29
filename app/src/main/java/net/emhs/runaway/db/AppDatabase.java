@@ -14,7 +14,7 @@ public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
 
     public static AppDatabase getDbInstance(Context context) {
-        if(INSTANCE == null) {
+        if(INSTANCE == null) { // Creates database if there is no database
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "USERS")
                     .allowMainThreadQueries()
                     .build();

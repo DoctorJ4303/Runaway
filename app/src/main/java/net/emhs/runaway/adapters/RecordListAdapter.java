@@ -1,5 +1,6 @@
 package net.emhs.runaway.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,13 +18,14 @@ import java.util.Map;
 
 public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.MyViewHolder> {
 
-    private Context context;
+    private final Context context;
     private Map<Integer, Time> records;
 
     public RecordListAdapter(Context context) {
         this.context = context;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setRecordMap(Map<Integer, Time> records) {
         this.records = records;
         notifyDataSetChanged();
@@ -32,34 +34,32 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.My
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.record_list, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.record_list, parent, false); // Inflates list
 
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.distance.setText(new ArrayList<>(this.records.keySet()).get(position) + "m");
-        holder.time.setText(new ArrayList<>(this.records.values()).get(position).toString());
+        // Sets distance inside inflated list
+        holder.distance.setText(context.getString(R.string.record_list_adapter_distance, new ArrayList<>(this.records.keySet()).get(position)));
+        holder.time.setText(new ArrayList<>(this.records.values()).get(position).toString()); // Sets time
     }
 
     @Override
     public int getItemCount() {
-        if (records == null) {
-            return 0;
-        }
-        return this.records.size();
+        return records==null ? 0 : this.records.size(); // Returns item count
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView distance;
         TextView time;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            distance = itemView.findViewById(R.id.record_list_distance);
-            time = itemView.findViewById(R.id.record_list_time);
+            this.distance = itemView.findViewById(R.id.record_list_distance); // Finds distance text in inflated list
+            this.time = itemView.findViewById(R.id.record_list_time); // Finds time text
         }
     }
 }

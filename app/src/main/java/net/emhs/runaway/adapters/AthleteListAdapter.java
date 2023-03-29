@@ -1,5 +1,6 @@
 package net.emhs.runaway.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ public class AthleteListAdapter extends RecyclerView.Adapter<AthleteListAdapter.
         this.context = context;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setAthleteList(List<Athlete> athletes) {
         this.athletes = athletes;
         notifyDataSetChanged();
@@ -48,7 +50,7 @@ public class AthleteListAdapter extends RecyclerView.Adapter<AthleteListAdapter.
     }
 
     //View Holder for AthleteListAdapter
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView name;
         ImageView pfp;
@@ -59,5 +61,4 @@ public class AthleteListAdapter extends RecyclerView.Adapter<AthleteListAdapter.
             pfp = itemView.findViewById(R.id.athlete_list_pfp);
         }
     }
-
 }

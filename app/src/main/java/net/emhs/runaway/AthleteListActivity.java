@@ -28,12 +28,7 @@ public class AthleteListActivity extends AppCompatActivity {
 
         // Athlete list click listener. Checks if an athlete is clicked in the list
         athleteListView.addOnItemTouchListener(
-                new RecyclerItemClickListener(getApplicationContext(), athleteListView, new RecyclerItemClickListener.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                viewAthlete(db.athleteDao().getAllAthletes().get(position));
-            }
-            }));
+                new RecyclerItemClickListener(getApplicationContext(), (view, position) -> viewAthlete(db.athleteDao().getAllAthletes().get(position))));
 
     }
 
