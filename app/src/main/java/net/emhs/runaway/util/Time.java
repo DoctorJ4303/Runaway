@@ -2,6 +2,8 @@ package net.emhs.runaway.util;
 
 import androidx.annotation.NonNull;
 
+import net.emhs.runaway.db.Athlete;
+
 import java.text.ParseException;
 import java.util.Arrays;
 
@@ -44,4 +46,6 @@ public class Time {
 
         return  stringMinutes + ":" + stringSeconds + "." + stringMillis;
     }
+
+
 }

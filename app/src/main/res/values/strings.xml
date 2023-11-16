@@ -23,6 +23,7 @@
     <string name="distance">Distance</string>
     <string name="time">Time</string>
     <string name="record_list_adapter_distance">%1$dm</string>
+    <string name="workout_list_title">WORKOUTS</string>
 
     <!--Text Input Hints-->
     <string name="name">Name</string>
