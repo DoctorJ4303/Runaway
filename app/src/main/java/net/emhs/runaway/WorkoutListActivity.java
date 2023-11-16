@@ -1,12 +1,17 @@
 package net.emhs.runaway;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintSet;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
+import com.google.android.material.slider.Slider;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfReader;
@@ -30,12 +35,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
 
-public class WorkoutListActivity extends AppCompatActivity {
+public class WorkoutListActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_list);
+
+
+        SeekBar slider = findViewById(R.id.seekBar);
+        slider.setOnSeekBarChangeListener(seekBarChangeListener);
+        int progress = slider.getProgress();
 
         try {
             createPDF();
@@ -44,11 +54,26 @@ public class WorkoutListActivity extends AppCompatActivity {
         }
     }
 
+    SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
+        @Override
+        public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+            TextView data = findViewById(R.id.seek_bar_data);
+            int progress = (int)((((i-(20*(Math.floor((double)(i-1)/20))))*5)+100)*Math.pow(2,Math.floor((double) (i-1)/20)));
+            data.setText("Progress: " + progress);
+        }
+        @Override
+        public void onStartTrackingTouch(SeekBar seekBar) {
+
+        }
+
+        @Override
+        public void onStopTrackingTouch(SeekBar seekBar) {
+
+        }
+    };
     public void createPDF () throws IOException, ParseException {
         //getFilesDir() + "/workout_pdfs/test.pdf"
-        File pathName = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
-        System.out.println(pathName);
-        File pdfFile = new File(pathName + "/test.pdf");
+        /*File pdfFile = new File(getFilesDir() + "workout_pdfs/test.pdf");
         PdfWriter writer = new PdfWriter(pdfFile);
         PdfDocument pdf = new PdfDocument(writer);
         pdf.setDefaultPageSize(PageSize.A4.rotate());
@@ -61,7 +86,9 @@ public class WorkoutListActivity extends AppCompatActivity {
         Workout workout = new Workout("Test Title", db.athleteDao().getAllAthletes().toArray(new Athlete[0]), elements);
         document.add(workout.toTable());
 
-        document.close();
+        document.close();*/
+
+
     }
 
     public double calculatePace(Athlete athlete) {
@@ -71,4 +98,6 @@ public class WorkoutListActivity extends AppCompatActivity {
     public void back(View view) {
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
+
+
 }
