@@ -2,6 +2,10 @@ package net.emhs.runaway.db;
 
 import android.sax.ElementListener;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
@@ -12,29 +16,40 @@ import net.emhs.runaway.util.Time;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
+@Entity(tableName = "workouts")
 public class Workout {
 
-    private String title;
-    private Athlete[] athletes;
-    private Element[] elements;
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name="uid")
+    public int uid;
 
-    public Workout(String title, Athlete[] athletes, Element[] elements) {
-        this.title = title;
+    @ColumnInfo(name="name")
+    public String name;
+    @ColumnInfo(name="athletes")
+    public String athletes;
+    @ColumnInfo(name="elements")
+    public String elements;
+
+    public Workout(String name, String athletes, String elements) {
+        this.name = name;
         this.athletes = athletes;
         this.elements = elements;
     }
 
     public Paragraph toTable() throws ParseException {
+        List<Element> elements = MapConverter.fromStringToList(this.elements);
+        List<Athlete> athletes = MapConverter.fromStringToList(this.athletes);
         Paragraph paragraph = new Paragraph();
         Table titleTable = new Table(1);
         float tableHeight = 0f;
         titleTable.setFixedPosition(36f, 531f, 770f);
-        Table table = new Table(elements.length+1);
-        float averageWidth = 770f/elements.length+1;
+        Table table = new Table(elements.size()+1);
+        float averageWidth = 770f/elements.size()+1;
 
         Cell titleCell = new Cell();
-        titleCell.add(new Paragraph(title));
+        titleCell.add(new Paragraph(name));
         titleCell.setWidth(824f).setHeight(20f);
         titleTable.addHeaderCell(titleCell);
 
@@ -44,7 +59,7 @@ public class Workout {
         }
         tableHeight += 24;
 
-        String times[] = new String[athletes.length];
+        String times[] = new String[athletes.size()];
         for (Athlete a : athletes) {
             for (Element e : elements) {
                 System.out.println(paceFromDistance(a, e.pace));

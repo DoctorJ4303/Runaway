@@ -2,6 +2,7 @@ package net.emhs.runaway;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintSet;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ import net.emhs.runaway.db.Athlete;
 import net.emhs.runaway.db.Element;
 import net.emhs.runaway.db.Workout;
 import net.emhs.runaway.util.Time;
+import net.emhs.runaway.util.UpdateAdapters;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -37,29 +39,37 @@ import java.text.ParseException;
 
 public class WorkoutListActivity extends AppCompatActivity{
 
+    private AppDatabase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_list);
 
+        this.db = AppDatabase.getDbInstance(getApplicationContext());
+        UpdateAdapters.updateWorkoutAdapter(this);
 
-        SeekBar slider = findViewById(R.id.seekBar);
-        slider.setOnSeekBarChangeListener(seekBarChangeListener);
-        int progress = slider.getProgress();
 
-        try {
-            createPDF();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
         @Override
         public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-            TextView data = findViewById(R.id.seek_bar_data);
+            if (i < 2)
+                i = 0;
+            else if (i > 18 && i < 22)
+                i = 20;
+            else if (i > 38 && i < 42)
+                i = 40;
+            else if (i > 58 && i < 62)
+                i = 60;
+            else if (i > 78 && i < 82)
+                i = 80;
+            else if (i > 98)
+                i = 100;
+
+            seekBar.setProgress(i);
+
             int progress = (int)((((i-(20*(Math.floor((double)(i-1)/20))))*5)+100)*Math.pow(2,Math.floor((double) (i-1)/20)));
-            data.setText("Progress: " + progress);
         }
         @Override
         public void onStartTrackingTouch(SeekBar seekBar) {

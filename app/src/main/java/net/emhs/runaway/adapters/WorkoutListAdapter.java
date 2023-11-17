@@ -1,6 +1,5 @@
 package net.emhs.runaway.adapters;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,44 +11,41 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.emhs.runaway.R;
-import net.emhs.runaway.db.Athlete;
+import net.emhs.runaway.db.Workout;
 
 import java.util.List;
 
-public class AthleteListAdapter extends RecyclerView.Adapter<AthleteListAdapter.MyViewHolder> {
+public class WorkoutListAdapter extends RecyclerView.Adapter<WorkoutListAdapter.MyViewHolder> {
 
     private final Context context;
-    private List<Athlete> athletes;
+    private List<Workout> workouts;
 
-    public AthleteListAdapter(Context context) {
+    public WorkoutListAdapter(Context context) {
         this.context = context;
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    public void setAthleteList(List<Athlete> athletes) {
-        this.athletes = athletes;
-        notifyDataSetChanged();
+    public void setWorkoutList(List<Workout> workouts) {
+        this.workouts = workouts;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.athlete_list, parent, false); // Inflates athlete_list.xml
+        View view = LayoutInflater.from(context).inflate(R.layout.workout_list, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.name.setText(this.athletes.get(position).name); // Sets the name of the athlete in the list
-        holder.pfp.setImageResource(R.drawable.profile_picture); // Sets image programmatically because it wasn't storing in the xml
+        holder.name.setText(this.workouts.get(position).name);
+        holder.pfp.setImageResource(R.drawable.profile_picture);
     }
 
     @Override
     public int getItemCount() {
-        return this.athletes == null ? 0 : this.athletes.size(); // Returns length of list
+        return this.workouts == null ? 0 : this.workouts.size();
     }
 
-    //View Holder for AthleteListAdapter
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView name;
@@ -57,7 +53,7 @@ public class AthleteListAdapter extends RecyclerView.Adapter<AthleteListAdapter.
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.athlete_list_name);
+            name = itemView.findViewById(R.id.workout_list_name);
             pfp = itemView.findViewById(R.id.workout_list_pfp);
         }
     }

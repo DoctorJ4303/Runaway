@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import net.emhs.runaway.R;
 import net.emhs.runaway.adapters.AthleteListAdapter;
 import net.emhs.runaway.adapters.RecordListAdapter;
+import net.emhs.runaway.adapters.WorkoutListAdapter;
 import net.emhs.runaway.db.AppDatabase;
 import net.emhs.runaway.db.Athlete;
 import net.emhs.runaway.dialogs.RecordAddDialog;
@@ -46,12 +47,26 @@ public class UpdateAdapters {
         AppDatabase db = AppDatabase.getDbInstance(activity.getApplicationContext()); // Sets AppDatabase instance
 
         athleteListView.setLayoutManager(new LinearLayoutManager(activity)); // Sets layout manager
-        athleteListView.addItemDecoration(new DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)); // Creates a new divier
+        athleteListView.addItemDecoration(new DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)); // Creates a new divider
         athleteListView.setAdapter(adapter); // Applies divider
 
         adapter.setAthleteList(db.athleteDao().getAllAthletes()); // Sets list to athlete list from database
 
         return athleteListView;
+    }
+
+    public static RecyclerView updateWorkoutAdapter(Activity activity) {
+        RecyclerView workoutListView = activity.findViewById(R.id.workout_list_recycler_view);
+        WorkoutListAdapter adapter = new WorkoutListAdapter(activity.getApplicationContext());
+        AppDatabase db = AppDatabase.getDbInstance(activity.getApplicationContext());
+
+        workoutListView.setLayoutManager(new LinearLayoutManager(activity));
+        workoutListView.addItemDecoration(new DividerItemDecoration(activity, DividerItemDecoration.VERTICAL));
+        workoutListView.setAdapter(adapter);
+
+        adapter.setWorkoutList(db.workoutDoa().getAllWorkouts());
+
+        return workoutListView;
     }
 
 }

@@ -8,7 +8,7 @@
     tools:context=".WorkoutListActivity">
 
     <View
-        android:id="@+id/top_border3"
+        android:id="@+id/workout_list_top_border"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="#00263C"
@@ -16,11 +16,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.07"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/athlete_list_title3"
+        app:layout_constraintTop_toBottomOf="@id/activity_workout_list_title"
         app:layout_constraintVertical_bias="0.007" />
 
     <ImageButton
-        android:id="@+id/athlete_list_back3"
+        android:id="@+id/activity_workout_list_back"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:background="#00FFFFFF"
@@ -33,7 +33,7 @@
         tools:ignore="DuplicateSpeakableTextCheck" />
 
     <TextView
-        android:id="@+id/athlete_list_title3"
+        android:id="@+id/activity_workout_list_title"
         android:layout_width="wrap_content"
         android:layout_height="34dp"
         android:layout_marginTop="8dp"
@@ -47,34 +47,26 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/athlete_list_add3"
+        android:id="@+id/activity_workout_list_add"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:background="#00FFFFFF"
         android:contentDescription="@string/athlete_list_add"
-        android:onClick="addAthlete"
+        android:onClick="addWorkout"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/plus" />
 
-    <SeekBar
-        android:id="@+id/seekBar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/workout_list_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="700dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/seek_bar_data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="31dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/seekBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/workout_list_top_border"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

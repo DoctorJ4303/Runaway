@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.List;
 import java.util.Map;
 
 public class MapConverter {
@@ -20,5 +21,18 @@ public class MapConverter {
     public static String fromMap(Map<Integer, Time> map) {
         Gson gson = new Gson();
         return gson.toJson(map);
+    }
+
+    @TypeConverter
+    public static String fromList(List list) {
+        Gson gson = new Gson();
+        return gson.toJson(list);
+    }
+
+    @TypeConverter
+    public static List fromStringToList (String s) {
+        Gson gson = new Gson();
+        Type listType = new TypeToken<List<?>>(){}.getType();
+        return gson.fromJson(s, listType);
     }
 }
