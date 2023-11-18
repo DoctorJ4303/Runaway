@@ -25,6 +25,8 @@
     <string name="time">Time</string>
     <string name="record_list_adapter_distance">%1$dm</string>
     <string name="workout_list_title">WORKOUTS</string>
+    <string name="section_row_distance">Distance:</string>
+    <string name="section_row_pace">Pace:</string>
 
     <!--Text Input Hints-->
     <string name="name">Name</string>

@@ -1,14 +1,20 @@
 package net.emhs.runaway.db;
 
+import android.view.View;
+
 import net.emhs.runaway.util.Time;
 
 public class Element {
 
     public int distance;
     public int pace;
+    public int distanceProgress;
+    public int paceProgress;
 
-    public Element(int distance, int pace) {
-        this.distance = distance;
-        this.pace = pace;
+    public View view;
+
+    public Element(int distanceProgress, int paceProgress) {
+        this.distanceProgress = distanceProgress;
+        this.paceProgress = paceProgress;
     }
 }
