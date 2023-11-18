@@ -47,8 +47,6 @@ public class WorkoutListActivity extends AppCompatActivity{
 
         this.db = AppDatabase.getDbInstance(getApplicationContext());
         UpdateAdapters.updateWorkoutAdapter(this);
-
-
     }
 
     SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
@@ -107,6 +105,10 @@ public class WorkoutListActivity extends AppCompatActivity{
 
     public void back(View view) {
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
+    }
+
+    public void addWorkout(View view) {
+        startActivity(new Intent(getApplicationContext(), CreateWorkoutActivity.class));
     }
 
 

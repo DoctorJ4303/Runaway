@@ -3,7 +3,8 @@
     <string name="empty"> </string>
 
     <!--Button Descriptions-->
-    <string name="main_athlete_list">Athlete List</string>
+    <string name="main_athlete_list">ATHLETES</string>
+    <string name="main_workout_list">WORKOUTS</string>
     <string name="athlete_list_back">Back</string>
     <string name="athlete_list_add">Add Athlete</string>
     <string name="athlete_add_save">CREATE ATHLETE</string>
@@ -27,4 +28,5 @@
 
     <!--Text Input Hints-->
     <string name="name">Name</string>
+    <string name="title_activity_create_workout">CreateWorkoutActivity</string>
 </resources>

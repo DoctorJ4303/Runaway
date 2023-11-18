@@ -21,19 +21,34 @@
         app:layout_constraintVertical_bias=".1"
         app:srcCompat="@drawable/logo" />
 
-    <ImageButton
+    <Button
         android:id="@+id/main_athlete_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#00FFFFFF"
-        android:contentDescription="@string/main_athlete_list"
-        android:scaleType="fitCenter"
+        style="@style/Theme.Runaway.Button"
+        android:layout_width="360dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="20dp"
+        android:textSize="25dp"
+        android:text="@string/main_athlete_list"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_logo"
-        app:layout_constraintVertical_bias=".2"
-        app:srcCompat="@drawable/runners"
-        tools:adjustViewBounds="true" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/main_workout_list"
+        style="@style/Theme.Runaway.Button"
+        android:layout_width="360dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="20dp"
+        android:textSize="25dp"
+        android:text="@string/main_workout_list"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_athlete_list"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

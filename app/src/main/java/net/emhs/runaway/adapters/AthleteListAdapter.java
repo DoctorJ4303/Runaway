@@ -58,7 +58,7 @@ public class AthleteListAdapter extends RecyclerView.Adapter<AthleteListAdapter.
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.athlete_list_name);
-            pfp = itemView.findViewById(R.id.workout_list_pfp);
+            pfp = itemView.findViewById(R.id.athlete_list_pfp);
         }
     }
 }
