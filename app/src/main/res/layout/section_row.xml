@@ -11,7 +11,7 @@
         style="@style/Theme.Runaway.Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:text="@string/section_row_distance"
         android:textSize="15dp"
@@ -22,17 +22,19 @@
         android:id="@+id/section_row_distance_bar"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/section_row_distance" />
+        app:layout_constraintTop_toBottomOf="@+id/section_row_distance"
+        android:thumbTint="@color/white"
+        android:progressDrawable="@drawable/progress" />
 
     <TextView
         android:id="@+id/section_row_pace"
         style="@style/Theme.Runaway.Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:text="@string/section_row_pace"
         android:textSize="15dp"
@@ -43,10 +45,12 @@
         android:id="@+id/section_row_pace_bar"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/section_row_pace" />
+        app:layout_constraintTop_toBottomOf="@+id/section_row_pace"
+        android:thumbTint="@color/white"
+        android:progressDrawable="@drawable/progress"/>
 
     <EditText
         android:id="@+id/section_row_distance_edit"

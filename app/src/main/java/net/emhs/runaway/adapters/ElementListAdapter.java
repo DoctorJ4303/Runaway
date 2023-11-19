@@ -1,5 +1,6 @@
 package net.emhs.runaway.adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.text.Editable;
@@ -11,6 +12,8 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.EditText;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -74,19 +77,21 @@ public class ElementListAdapter extends BaseExpandableListAdapter {
         return false;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View getGroupView(int position, boolean isExpanded, View convertView, ViewGroup parent) {
         if(convertView==null) {
             convertView = inflater.inflate(R.layout.element_list, null);
         }
         TextView text = convertView.findViewById(R.id.element_list_text);
-        text.setText("Section "+ groupList.get(position));
+        text.setText("Section "+ (groupList.get(position)+1));
         return convertView;
     }
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         tempChild = (Element) childItem.get(groupList.get(groupPosition));
+
         EditText distanceEdit = tempChild.view.findViewById(R.id.section_row_distance_edit);
         EditText paceEdit = tempChild.view.findViewById(R.id.section_row_pace_edit);
         SeekBar distanceBar = tempChild.view.findViewById(R.id.section_row_distance_bar);
@@ -100,6 +105,8 @@ public class ElementListAdapter extends BaseExpandableListAdapter {
                     if (i<0) i=0;
                     if (i>100) i=100;
                     distanceBar.setProgress(i);
+                }else {
+                    distanceEdit.setText(String.valueOf(distanceBar.getProgress()));
                 }
             }
         });
@@ -121,6 +128,8 @@ public class ElementListAdapter extends BaseExpandableListAdapter {
                     if (i<0) i=0;
                     if (i>100) i=100;
                     paceBar.setProgress(i);
+                } else {
+                    paceEdit.setText(String.valueOf(paceBar.getProgress()));
                 }
             }
         });
@@ -143,7 +152,7 @@ public class ElementListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public void onGroupCollapsed(int groupPosition) {
-        Element element = childItem.get(groupList.get(groupPosition));
+        Element element = childItem.get(groupPosition);
 
         SeekBar distanceBar = element.view.findViewById(R.id.section_row_distance_bar);
         element.distanceProgress = distanceBar.getProgress();
@@ -158,7 +167,7 @@ public class ElementListAdapter extends BaseExpandableListAdapter {
         System.out.println(paceEdit.getText().toString());
         if (!paceEdit.getText().toString().isEmpty())
             element.paceProgress = Integer.parseInt(paceEdit.getText().toString());
-
         super.onGroupCollapsed(groupPosition);
     }
+
 }

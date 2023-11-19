@@ -31,10 +31,19 @@ public class CreateWorkoutActivity extends AppCompatActivity {
         ArrayList<Integer> listInt = new ArrayList<>();
         listInt.add(0);
         listInt.add(1);
+        listInt.add(2);
 
 
         dropdown.setAdapter(new TypeDropdownAdapter(this, R.layout.type_list, R.id.type_list_text, list));
         listView.setAdapter(new ElementListAdapter(this, listInt));
+
+        listView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView expandableListView, View view, int i, long l) {
+                System.out.println("HERE!!");
+                return false;
+            }
+        });
     }
 
     public void back(View view) {
