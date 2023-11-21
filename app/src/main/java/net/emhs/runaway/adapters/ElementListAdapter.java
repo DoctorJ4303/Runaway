@@ -19,22 +19,28 @@ import android.widget.TextView;
 
 import net.emhs.runaway.R;
 import net.emhs.runaway.db.Element;
+import net.emhs.runaway.util.AfterTextWatcher;
 
 import java.util.ArrayList;
 
 public class ElementListAdapter extends BaseExpandableListAdapter {
 
-    public ArrayList<Integer> groupList;
+    public ArrayList<View> groupList;
     public Element tempChild;
     public ArrayList<Element> childItem = new ArrayList<>();
     public LayoutInflater inflater;
     public Activity activity;
 
-    public ElementListAdapter(Context context, ArrayList<Integer> groupList) {
+    public ElementListAdapter(Activity activity, ArrayList<Integer> list) {
+        this.activity = activity;
+
+        ArrayList<View> groupList = new ArrayList<>();
+        for (int i : list) { groupList.add(inflater.inflate(R.layout.element_list, null)); }
         this.groupList = groupList;
-        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        this.inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         Element child;
-        for (int i : groupList) {
+        for (int i : list) {
             child = new Element(0, 0);
             child.view = inflater.inflate(R.layout.section_row, null);
             this.childItem.add(child);
@@ -61,6 +67,9 @@ public class ElementListAdapter extends BaseExpandableListAdapter {
     public Object getChild(int i, int i1) {
         return null;
     }
+    public Object getChild(int i) {
+        return childItem.get(i);
+    }
 
     @Override
     public long getGroupId(int i) {
@@ -79,69 +88,61 @@ public class ElementListAdapter extends BaseExpandableListAdapter {
 
     @SuppressLint("SetTextI18n")
     @Override
-    public View getGroupView(int position, boolean isExpanded, View convertView, ViewGroup parent) {
-        if(convertView==null) {
-            convertView = inflater.inflate(R.layout.element_list, null);
-        }
+    public View getGroupView(int position, boolean isExpanded, View convertView, ViewGroup parentViewGroup) {
+        ExpandableListView parent = (ExpandableListView) parentViewGroup;
+        convertView = groupList.get(position);
+
+
         TextView text = convertView.findViewById(R.id.element_list_text);
-        text.setText("Section "+ (groupList.get(position)+1));
-        return convertView;
+        text.setText("Section "+ (position+1));
+
+        ImageView close = convertView.findViewById(R.id.element_list_close);
+        close.setOnClickListener(view -> {
+            for (int i = position; i<groupList.size(); i++){
+                if (parent.isGroupExpanded(i)) {
+                    parent.collapseGroup(i);
+                    if (i != 0)
+                        parent.expandGroup(i - 1);
+                }
+                TextView textView = groupList.get(i).findViewById(R.id.element_list_text);
+                textView.setText("Section " + (i+1));
+            }
+            groupList.remove(position);
+            childItem.remove(position);
+            notifyDataSetChanged();
+        });
+
+        return groupList.get(position);
     }
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        tempChild = (Element) childItem.get(groupList.get(groupPosition));
+        tempChild = (Element) childItem.get(groupPosition);
 
         EditText distanceEdit = tempChild.view.findViewById(R.id.section_row_distance_edit);
         EditText paceEdit = tempChild.view.findViewById(R.id.section_row_pace_edit);
-        SeekBar distanceBar = tempChild.view.findViewById(R.id.section_row_distance_bar);
-        SeekBar paceBar = tempChild.view.findViewById(R.id.section_row_pace_bar);
-        distanceEdit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        paceEdit.addTextChangedListener(new AfterTextWatcher() {
             @Override
-            public void onFocusChange(View view, boolean b) {
-                String s = ((EditText)view).getText().toString();
-                if(!s.isEmpty()) {
-                    int i = Integer.parseInt(s);
-                    if (i<0) i=0;
-                    if (i>100) i=100;
-                    distanceBar.setProgress(i);
-                }else {
-                    distanceEdit.setText(String.valueOf(distanceBar.getProgress()));
+            public void afterTextChanged(Editable editable) {
+                if (editable.toString().isEmpty()) return;
+                int i = Integer.parseInt(editable.toString());
+                if (i > 5000) {
+                    paceEdit.setText("5000");
+                    paceEdit.setSelection(4);
                 }
             }
         });
-        distanceBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        distanceEdit.addTextChangedListener(new AfterTextWatcher() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) { distanceEdit.setText(String.valueOf(i)); }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) { }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) { } });
-        paceEdit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                String s = ((EditText)view).getText().toString();
-                if(!s.isEmpty()) {
-                    int i = Integer.parseInt(s);
-                    if (i<0) i=0;
-                    if (i>100) i=100;
-                    paceBar.setProgress(i);
-                } else {
-                    paceEdit.setText(String.valueOf(paceBar.getProgress()));
+            public void afterTextChanged(Editable editable) {
+                if (editable.toString().isEmpty()) return;
+                int i = Integer.parseInt(editable.toString());
+                if (i > 5000) {
+                    distanceEdit.setText("5000");
+                    distanceEdit.setSelection(4);
                 }
             }
         });
-        paceBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) { paceEdit.setText(String.valueOf(i)); }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) { }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) { } });
         return tempChild.view;
     }
 
@@ -154,20 +155,25 @@ public class ElementListAdapter extends BaseExpandableListAdapter {
     public void onGroupCollapsed(int groupPosition) {
         Element element = childItem.get(groupPosition);
 
-        SeekBar distanceBar = element.view.findViewById(R.id.section_row_distance_bar);
-        element.distanceProgress = distanceBar.getProgress();
-        SeekBar paceBar = element.view.findViewById(R.id.section_row_pace_bar);
-        element.paceProgress = paceBar.getProgress();
-
         EditText distanceEdit = element.view.findViewById(R.id.section_row_distance_edit);
-        System.out.println(distanceEdit.getText().toString());
         if (!distanceEdit.getText().toString().isEmpty())
             element.distanceProgress = Integer.parseInt(distanceEdit.getText().toString());
+        else
+            element.paceProgress = 0;
         EditText paceEdit = element.view.findViewById(R.id.section_row_pace_edit);
-        System.out.println(paceEdit.getText().toString());
         if (!paceEdit.getText().toString().isEmpty())
             element.paceProgress = Integer.parseInt(paceEdit.getText().toString());
+        else
+            element.paceProgress = 0;
         super.onGroupCollapsed(groupPosition);
     }
 
+    public void addChild(ExpandableListView parent) {
+        Element element = new Element(0, 0);
+        element.view = inflater.inflate(R.layout.section_row, null);
+        groupList.add(inflater.inflate(R.layout.element_list, null));
+        childItem.add(element);
+        parent.expandGroup(groupList.size()-1);
+        notifyDataSetChanged();
+    }
 }

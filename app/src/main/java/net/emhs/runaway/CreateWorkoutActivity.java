@@ -11,10 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import net.emhs.runaway.adapters.ElementListAdapter;
 import net.emhs.runaway.adapters.TypeDropdownAdapter;
+import net.emhs.runaway.db.Element;
 
 import java.util.ArrayList;
 
 public class CreateWorkoutActivity extends AppCompatActivity {
+
+    public ElementListAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,24 +32,19 @@ public class CreateWorkoutActivity extends AppCompatActivity {
         list.add("Item 1");
 
         ArrayList<Integer> listInt = new ArrayList<>();
-        listInt.add(0);
-        listInt.add(1);
-        listInt.add(2);
 
+        adapter = new ElementListAdapter(this, listInt);
 
         dropdown.setAdapter(new TypeDropdownAdapter(this, R.layout.type_list, R.id.type_list_text, list));
-        listView.setAdapter(new ElementListAdapter(this, listInt));
-
-        listView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
-            @Override
-            public boolean onGroupClick(ExpandableListView expandableListView, View view, int i, long l) {
-                System.out.println("HERE!!");
-                return false;
-            }
-        });
+        listView.setAdapter(adapter);
     }
 
     public void back(View view) {
         startActivity(new Intent(getApplicationContext(), WorkoutListActivity.class));
+    }
+
+    public void addSection(View view) {
+        ExpandableListView listView = findViewById(R.id.create_workout_list);
+        adapter.addChild(listView);
     }
 }

@@ -12,22 +12,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:text="@string/section_row_distance"
         android:textSize="15dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <SeekBar
-        android:id="@+id/section_row_distance_bar"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/section_row_distance"
-        android:thumbTint="@color/white"
-        android:progressDrawable="@drawable/progress" />
 
     <TextView
         android:id="@+id/section_row_pace"
@@ -35,53 +24,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:text="@string/section_row_pace"
         android:textSize="15dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/section_row_distance_bar" />
-
-    <SeekBar
-        android:id="@+id/section_row_pace_bar"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/section_row_pace"
-        android:thumbTint="@color/white"
-        android:progressDrawable="@drawable/progress"/>
-
-    <EditText
-        android:id="@+id/section_row_distance_edit"
-        style="@style/Theme.Runaway.Text"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:background="@android:color/transparent"
-        android:inputType="number"
-        android:text="0"
-        android:textSize="15dp"
-        app:layout_constraintStart_toEndOf="@id/section_row_distance"
-        app:layout_constraintTop_toTopOf="parent"
-        android:focusable="true"
-        android:focusableInTouchMode="true"/>
+        app:layout_constraintStart_toEndOf="@id/section_row_distance_edit"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/section_row_pace_edit"
         style="@style/Theme.Runaway.Text"
-        android:layout_width="40dp"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:background="@android:color/transparent"
+        android:layout_marginTop="0dp"
+        android:backgroundTint="@color/white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:inputType="number"
         android:text="0"
         android:textSize="15dp"
         app:layout_constraintStart_toEndOf="@id/section_row_pace"
-        app:layout_constraintTop_toBottomOf="@id/section_row_distance_bar"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/section_row_distance_edit"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:backgroundTint="@android:color/white"
         android:focusable="true"
-        android:focusableInTouchMode="true"/>
+        android:text="0"
+        android:textSize="15dp"
+        android:focusableInTouchMode="true"
+        android:fontFamily="@font/lato"
+        android:inputType="number"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/section_row_distance"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
