@@ -10,12 +10,15 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.IOException;
+import java.text.ParseException;
+
 
 public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListener {
     private final OnItemClickListener mListener;
 
     public interface OnItemClickListener {
-        void onItemClick(View view, int position);
+        void onItemClick(View view, int position) throws ParseException, IOException;
     }
 
     GestureDetector mGestureDetector;
@@ -33,7 +36,13 @@ public class RecyclerItemClickListener implements RecyclerView.OnItemTouchListen
     @Override public boolean onInterceptTouchEvent(RecyclerView view, MotionEvent e) {
         View childView = view.findChildViewUnder(e.getX(), e.getY());
         if (childView != null && mListener != null && mGestureDetector.onTouchEvent(e)) {
-            mListener.onItemClick(childView, view.getChildAdapterPosition(childView));
+            try {
+                mListener.onItemClick(childView, view.getChildAdapterPosition(childView));
+            } catch (ParseException ex) {
+                throw new RuntimeException(ex);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
             return true;
         }
         return false;

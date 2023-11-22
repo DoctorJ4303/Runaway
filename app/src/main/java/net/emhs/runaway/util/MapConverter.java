@@ -1,11 +1,18 @@
 package net.emhs.runaway.util;
 
+import androidx.annotation.NonNull;
 import androidx.room.TypeConverter;
 
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import net.emhs.runaway.db.Element;
+
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -24,15 +31,25 @@ public class MapConverter {
     }
 
     @TypeConverter
-    public static String fromList(List list) {
-        Gson gson = new Gson();
-        return gson.toJson(list);
+    public static String fromList(Object list) {
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            String s = objectMapper.writeValueAsString(list);
+            return s;
+        } catch (JsonProcessingException e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     @TypeConverter
-    public static List fromStringToList (String s) {
+    public static ArrayList<Element> jsonToObject (String s) throws JsonProcessingException {
+        Type mapType = new TypeToken<ArrayList<Element>>(){}.getType();
+        return new Gson().fromJson(s, mapType);
+    }
+
+    public static String toJson(Object o) {
         Gson gson = new Gson();
-        Type listType = new TypeToken<List<?>>(){}.getType();
-        return gson.fromJson(s, listType);
+        return gson.toJson(o);
     }
 }

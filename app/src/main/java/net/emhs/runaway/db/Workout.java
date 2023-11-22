@@ -6,6 +6,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
@@ -27,20 +28,17 @@ public class Workout {
 
     @ColumnInfo(name="name")
     public String name;
-    @ColumnInfo(name="athletes")
-    public String athletes;
     @ColumnInfo(name="elements")
     public String elements;
 
-    public Workout(String name, String athletes, String elements) {
+    public Workout(String name, String elements) {
         this.name = name;
-        this.athletes = athletes;
         this.elements = elements;
     }
 
-    public Paragraph toTable() throws ParseException {
-        List<Element> elements = MapConverter.fromStringToList(this.elements);
-        List<Athlete> athletes = MapConverter.fromStringToList(this.athletes);
+    public Paragraph toTable(ArrayList<Athlete> athletes) throws ParseException, JsonProcessingException {
+        System.out.println(elements);
+        ArrayList<Element> elements = MapConverter.jsonToObject(this.elements);
         Paragraph paragraph = new Paragraph();
         Table titleTable = new Table(1);
         float tableHeight = 0f;
@@ -54,7 +52,9 @@ public class Workout {
         titleTable.addHeaderCell(titleCell);
 
         table.addCell(new Cell().add(new Paragraph(" ")).setWidth(averageWidth).setHeight(20f));
+
         for (Element e : elements) {
+            System.out.println(e.distance);
             table.addCell(new Cell().add(new Paragraph(String.valueOf(e.distance))).setWidth(averageWidth).setHeight(20f));
         }
         tableHeight += 24;
@@ -62,7 +62,7 @@ public class Workout {
         String times[] = new String[athletes.size()];
         for (Athlete a : athletes) {
             for (Element e : elements) {
-                System.out.println(paceFromDistance(a, e.pace));
+                //System.out.println(paceFromDistance(a, e.pace));
             }
         }
 
@@ -73,8 +73,6 @@ public class Workout {
             }
             tableHeight += 44;
         }
-
-        System.out.println(table.getNumberOfRows());
 
         table.setFixedPosition(36f,531f-tableHeight,770f);
         paragraph.add(titleTable);
@@ -105,9 +103,11 @@ public class Workout {
         Collections.sort(lesser);
         Collections.sort(greater);
 
-        System.out.println(lesser);
-        System.out.println(greater);
+        //System.out.println(lesser);
+        //System.out.println(greater);
 
         return new Time("0:00.00");
     }
+
+    public class ElementList extends ArrayList<Element> {}
 }

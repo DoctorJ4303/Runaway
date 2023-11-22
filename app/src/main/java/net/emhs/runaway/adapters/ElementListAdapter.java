@@ -28,6 +28,7 @@ public class ElementListAdapter extends BaseExpandableListAdapter {
     public ArrayList<View> groupList;
     public Element tempChild;
     public ArrayList<Element> childItem = new ArrayList<>();
+    public ArrayList<View> childViews = new ArrayList<>();
     public LayoutInflater inflater;
     public Activity activity;
 
@@ -42,7 +43,7 @@ public class ElementListAdapter extends BaseExpandableListAdapter {
         Element child;
         for (int i : list) {
             child = new Element(0, 0);
-            child.view = inflater.inflate(R.layout.section_row, null);
+            childViews.add(inflater.inflate(R.layout.section_row, null));
             this.childItem.add(child);
 
         }
@@ -92,7 +93,6 @@ public class ElementListAdapter extends BaseExpandableListAdapter {
         ExpandableListView parent = (ExpandableListView) parentViewGroup;
         convertView = groupList.get(position);
 
-
         TextView text = convertView.findViewById(R.id.element_list_text);
         text.setText("Section "+ (position+1));
 
@@ -118,9 +118,10 @@ public class ElementListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         tempChild = (Element) childItem.get(groupPosition);
+        View childView = childViews.get(groupPosition);
 
-        EditText distanceEdit = tempChild.view.findViewById(R.id.section_row_distance_edit);
-        EditText paceEdit = tempChild.view.findViewById(R.id.section_row_pace_edit);
+        EditText distanceEdit = childView.findViewById(R.id.section_row_distance_edit);
+        EditText paceEdit = childView.findViewById(R.id.section_row_pace_edit);
         paceEdit.addTextChangedListener(new AfterTextWatcher() {
             @Override
             public void afterTextChanged(Editable editable) {
@@ -143,7 +144,7 @@ public class ElementListAdapter extends BaseExpandableListAdapter {
                 }
             }
         });
-        return tempChild.view;
+        return childView;
     }
 
     @Override
@@ -153,27 +154,33 @@ public class ElementListAdapter extends BaseExpandableListAdapter {
 
     @Override
     public void onGroupCollapsed(int groupPosition) {
-        Element element = childItem.get(groupPosition);
-
-        EditText distanceEdit = element.view.findViewById(R.id.section_row_distance_edit);
-        if (!distanceEdit.getText().toString().isEmpty())
-            element.distanceProgress = Integer.parseInt(distanceEdit.getText().toString());
-        else
-            element.paceProgress = 0;
-        EditText paceEdit = element.view.findViewById(R.id.section_row_pace_edit);
-        if (!paceEdit.getText().toString().isEmpty())
-            element.paceProgress = Integer.parseInt(paceEdit.getText().toString());
-        else
-            element.paceProgress = 0;
+        updateElements();
         super.onGroupCollapsed(groupPosition);
     }
 
     public void addChild(ExpandableListView parent) {
         Element element = new Element(0, 0);
-        element.view = inflater.inflate(R.layout.section_row, null);
         groupList.add(inflater.inflate(R.layout.element_list, null));
+        childViews.add(inflater.inflate(R.layout.section_row, null));
         childItem.add(element);
         parent.expandGroup(groupList.size()-1);
         notifyDataSetChanged();
+    }
+
+    public ArrayList<Element> getChildItem() {
+        return childItem;
+    }
+
+    public void updateElements () {
+        Element e;
+        EditText distanceEdit;
+        EditText paceEdit;
+        for (int i = 0; i < groupList.size(); i++) {
+            e = childItem.get(i);
+            distanceEdit = childViews.get(i).findViewById(R.id.section_row_distance_edit);
+            paceEdit = childViews.get(i).findViewById(R.id.section_row_pace_edit);
+            e.distance = distanceEdit.getText().toString().isEmpty() ? 0 : Integer.parseInt(distanceEdit.getText().toString());
+            e.pace = paceEdit.getText().toString().isEmpty() ? 0 : Integer.parseInt(paceEdit.getText().toString());
+        }
     }
 }

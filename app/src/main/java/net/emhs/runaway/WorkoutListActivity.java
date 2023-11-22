@@ -1,5 +1,6 @@
 package net.emhs.runaway;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +20,7 @@ import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.List;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 import com.itextpdf.pdfa.PdfADocument;
@@ -27,6 +29,7 @@ import net.emhs.runaway.db.AppDatabase;
 import net.emhs.runaway.db.Athlete;
 import net.emhs.runaway.db.Element;
 import net.emhs.runaway.db.Workout;
+import net.emhs.runaway.util.RecyclerItemClickListener;
 import net.emhs.runaway.util.Time;
 import net.emhs.runaway.util.UpdateAdapters;
 
@@ -36,6 +39,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 
 public class WorkoutListActivity extends AppCompatActivity{
 
@@ -46,7 +50,11 @@ public class WorkoutListActivity extends AppCompatActivity{
         setContentView(R.layout.activity_workout_list);
 
         this.db = AppDatabase.getDbInstance(getApplicationContext());
-        UpdateAdapters.updateWorkoutAdapter(this);
+        RecyclerView list = UpdateAdapters.updateWorkoutAdapter(this);
+        list.addOnItemTouchListener(new RecyclerItemClickListener(getApplicationContext(), ((view, position) -> {
+            Workout workout = db.workoutDoa().getAllWorkouts().get(position);
+            createPDF(workout);
+        })));
     }
 
     SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
@@ -79,9 +87,9 @@ public class WorkoutListActivity extends AppCompatActivity{
 
         }
     };
-    public void createPDF () throws IOException, ParseException {
+    public void createPDF (Workout workout) throws IOException, ParseException {
         //getFilesDir() + "/workout_pdfs/test.pdf"
-        /*File pdfFile = new File(getFilesDir() + "workout_pdfs/test.pdf");
+        File pdfFile = new File(getFilesDir() + "/test.pdf");
         PdfWriter writer = new PdfWriter(pdfFile);
         PdfDocument pdf = new PdfDocument(writer);
         pdf.setDefaultPageSize(PageSize.A4.rotate());
@@ -89,12 +97,9 @@ public class WorkoutListActivity extends AppCompatActivity{
 
         AppDatabase db = AppDatabase.getDbInstance(this.getApplicationContext());
 
-        Element[] elements = new Element[]{new Element(300, 1600), new Element(300, 1600), new Element(300, 1600), new Element(300, 1600), new Element(300, 1600), new Element(300, 1600)};
+        document.add(workout.toTable((ArrayList)db.athleteDao().getAllAthletes()));
 
-        Workout workout = new Workout("Test Title", db.athleteDao().getAllAthletes().toArray(new Athlete[0]), elements);
-        document.add(workout.toTable());
-
-        document.close();*/
+        document.close();
 
 
     }

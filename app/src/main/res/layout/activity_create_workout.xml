@@ -60,48 +60,61 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/back_arrow"/>
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="172dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintStart_toStartOf="@id/create_workout_name"
-        app:layout_constraintTop_toBottomOf="@+id/create_workout_name" />
 
-    <ExpandableListView
-        android:id="@+id/create_workout_list"
-        android:layout_width="300dp"
-        android:layout_height="400dp"
-        android:layout_marginTop="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_workout_elements" />
 
     <TextView
         android:id="@+id/create_workout_elements"
         style="@style/Theme.Runaway.Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:text="Elements"
         android:textSize="22dp"
-
-        app:layout_constraintStart_toStartOf="@+id/spinner"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@id/create_workout_name"
+        app:layout_constraintStart_toStartOf="@id/create_workout_name"/>
 
     <ImageButton
         android:id="@+id/athlete_list_add"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:layout_marginTop="198dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="0dp"
         android:background="#00FFFFFF"
         android:contentDescription="@string/athlete_list_add"
         android:onClick="addSection"
         android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/create_workout_name"
+        app:layout_constraintTop_toBottomOf="@id/create_workout_name"
         app:srcCompat="@drawable/plus" />
 
+
+    <LinearLayout
+        android:id="@+id/create_workout_layout"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_workout_elements"
+        android:paddingBottom="300dp">
+
+        <ExpandableListView
+            android:id="@+id/create_workout_list"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/create_workout_save"
+        style="@style/Theme.Runaway.Button"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="-280dp"
+        android:text="Save Workout"
+        app:layout_constraintStart_toStartOf="@+id/create_workout_layout"
+        app:layout_constraintTop_toBottomOf="@+id/create_workout_layout"
+        android:onClick="saveWorkout"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
