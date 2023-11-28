@@ -94,7 +94,6 @@
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="@+id/record_view_background"
-        app:layout_constraintTop_toTopOf="@+id/record_view_background"
-        app:srcCompat="@drawable/back_arrow" />
+        app:layout_constraintTop_toTopOf="@+id/record_view_background"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

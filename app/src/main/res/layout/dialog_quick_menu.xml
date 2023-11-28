@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/quick_menu"
+    android:layout_width="240dp"
+    android:layout_height="234dp"
+    android:background="@drawable/round_corners"
+    android:backgroundTint="@color/blue_500">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/quick_menu_horizontal_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.042735044" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/quick_menu_horizontal_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1965812" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/quick_menu_horizontal_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25641027" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/quick_menu_horizontal_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.46153846" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/quick_menu_horizontal_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.50427353" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/quick_menu_horizontal_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7094017" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/quick_menu_horizontal_7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75213677" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/quick_menu_horizontal_8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95726496" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/quick_menu_vertical_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.041666668" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/quick_menu_vertical_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/quick_menu_vertical_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9583333" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/quick_menu_close"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/quick_menu_vertical_2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/quick_menu_horizontal_3"
+        app:srcCompat="@drawable/close">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_close_vertical_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.083333336" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_close_vertical_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9166667" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_close_horizontal_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.083333336"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_close_horizontal_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9166667"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@id/quick_menu_close_vertical_1"
+            app:layout_constraintEnd_toStartOf="@id/quick_menu_close_vertical_2"
+            app:layout_constraintTop_toTopOf="@id/quick_menu_close_horizontal_1"
+            app:layout_constraintBottom_toTopOf="@id/quick_menu_close_horizontal_2"
+            app:srcCompat="@drawable/close"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toEndOf="@id/quick_menu_vertical_2"
+        app:layout_constraintEnd_toStartOf="@id/quick_menu_vertical_3"
+        app:layout_constraintTop_toBottomOf="@id/quick_menu_horizontal_1"
+        app:layout_constraintBottom_toTopOf="@id/quick_menu_horizontal_2"
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/blue_700_transparent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_title_vertical_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.09411765" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_title_vertical_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.90588236" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_title_horizontal_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1388889" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_title_horizontal_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.8611111" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toEndOf="@id/quick_menu_title_vertical_1"
+            app:layout_constraintEnd_toStartOf="@id/quick_menu_title_vertical_2"
+            app:layout_constraintTop_toBottomOf="@id/quick_menu_title_horizontal_1"
+            app:layout_constraintBottom_toTopOf="@id/quick_menu_title_horizontal_2"
+            android:autoSizeTextType="uniform"
+            android:text="Quick Menu"
+            android:gravity="center"
+            style="@style/Theme.Runaway.Text"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/quick_menu_vertical_1"
+        app:layout_constraintEnd_toEndOf="@id/quick_menu_vertical_3"
+        app:layout_constraintTop_toTopOf="@id/quick_menu_horizontal_3"
+        app:layout_constraintBottom_toBottomOf="@id/quick_menu_horizontal_4"
+        android:backgroundTint="@color/blue_200"
+        android:background="@drawable/round_corners">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_add_athlete_vertical_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.027272727" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_add_athlete_vertical_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_add_athlete_vertical_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.22727273" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_add_athlete_vertical_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.8590909" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_add_athlete_horizontal_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.104166664" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_add_athlete_horizontal_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.875" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@id/quick_menu_add_athlete_vertical_1"
+            app:layout_constraintEnd_toEndOf="@id/quick_menu_add_athlete_vertical_2"
+            app:layout_constraintTop_toTopOf="@id/quick_menu_add_athlete_horizontal_1"
+            app:layout_constraintBottom_toBottomOf="@id/quick_menu_add_athlete_horizontal_2"
+            app:srcCompat="@drawable/plus"/>
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@id/quick_menu_add_athlete_vertical_3"
+            app:layout_constraintEnd_toEndOf="@id/quick_menu_add_athlete_vertical_4"
+            app:layout_constraintTop_toTopOf="@id/quick_menu_add_athlete_horizontal_1"
+            app:layout_constraintBottom_toBottomOf="@id/quick_menu_add_athlete_horizontal_2"
+            android:autoSizeTextType="uniform"
+            android:text="Add Athlete"
+            android:gravity="center"
+            style="@style/Theme.Runaway.Text"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/quick_menu_vertical_1"
+        app:layout_constraintEnd_toEndOf="@id/quick_menu_vertical_3"
+        app:layout_constraintTop_toTopOf="@id/quick_menu_horizontal_5"
+        app:layout_constraintBottom_toBottomOf="@id/quick_menu_horizontal_6"
+        android:backgroundTint="@color/blue_200"
+        android:background="@drawable/round_corners">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_add_workout_vertical_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.027272727" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_add_workout_vertical_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_add_workout_vertical_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.22727273" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_add_workout_vertical_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9409091" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_add_workout_horizontal_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.104166664" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_add_workout_horizontal_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.875" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@id/quick_menu_add_workout_vertical_1"
+            app:layout_constraintEnd_toEndOf="@id/quick_menu_add_workout_vertical_2"
+            app:layout_constraintTop_toTopOf="@id/quick_menu_add_workout_horizontal_1"
+            app:layout_constraintBottom_toBottomOf="@id/quick_menu_add_workout_horizontal_2"
+            app:srcCompat="@drawable/plus"/>
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@id/quick_menu_add_workout_vertical_3"
+            app:layout_constraintEnd_toEndOf="@id/quick_menu_add_workout_vertical_4"
+            app:layout_constraintTop_toTopOf="@id/quick_menu_add_workout_horizontal_1"
+            app:layout_constraintBottom_toBottomOf="@id/quick_menu_add_workout_horizontal_2"
+            android:autoSizeTextType="uniform"
+            android:text="Add Workout"
+            android:gravity="center"
+            style="@style/Theme.Runaway.Text"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/quick_menu_vertical_1"
+        app:layout_constraintEnd_toEndOf="@id/quick_menu_vertical_3"
+        app:layout_constraintTop_toTopOf="@id/quick_menu_horizontal_7"
+        app:layout_constraintBottom_toBottomOf="@id/quick_menu_horizontal_8"
+        android:backgroundTint="@color/blue_200"
+        android:background="@drawable/round_corners">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_add_notes_vertical_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.027272727" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_add_notes_vertical_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_add_notes_vertical_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.22727273" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_add_notes_vertical_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.78636366" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_add_notes_horizontal_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.104166664" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/quick_menu_add_notes_horizontal_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.875" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@id/quick_menu_add_notes_vertical_1"
+            app:layout_constraintEnd_toEndOf="@id/quick_menu_add_notes_vertical_2"
+            app:layout_constraintTop_toTopOf="@id/quick_menu_add_notes_horizontal_1"
+            app:layout_constraintBottom_toBottomOf="@id/quick_menu_add_notes_horizontal_2"
+            app:srcCompat="@drawable/plus"/>
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@id/quick_menu_add_notes_vertical_3"
+            app:layout_constraintEnd_toEndOf="@id/quick_menu_add_notes_vertical_4"
+            app:layout_constraintTop_toTopOf="@id/quick_menu_add_notes_horizontal_1"
+            app:layout_constraintBottom_toBottomOf="@id/quick_menu_add_notes_horizontal_2"
+            android:autoSizeTextType="uniform"
+            android:text="Add Notes"
+            android:gravity="center"
+            style="@style/Theme.Runaway.Text"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

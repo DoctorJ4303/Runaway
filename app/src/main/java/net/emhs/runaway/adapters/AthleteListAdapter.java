@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.emhs.runaway.R;
+import net.emhs.runaway.db.AppDatabase;
 import net.emhs.runaway.db.Athlete;
 
 import java.util.List;
@@ -20,9 +21,13 @@ public class AthleteListAdapter extends RecyclerView.Adapter<AthleteListAdapter.
 
     private final Context context;
     private List<Athlete> athletes;
+    private int type; // 0 = small; 1 = view; 2 = edit
 
-    public AthleteListAdapter(Context context) {
+    public AthleteListAdapter(Context context, int type) {
         this.context = context;
+        this.type = type;
+        this.athletes = AppDatabase.getDbInstance(context.getApplicationContext()).athleteDao().getAllAthletes();
+        System.out.println(athletes);
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -34,14 +39,13 @@ public class AthleteListAdapter extends RecyclerView.Adapter<AthleteListAdapter.
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.athlete_list, parent, false); // Inflates athlete_list.xml
+        View view = LayoutInflater.from(context).inflate(R.layout.athlete_item_small, parent, false);
+        // Inflates athlete_list.xml
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.name.setText(this.athletes.get(position).name); // Sets the name of the athlete in the list
-        holder.pfp.setImageResource(R.drawable.profile_picture); // Sets image programmatically because it wasn't storing in the xml
     }
 
     @Override
@@ -52,13 +56,9 @@ public class AthleteListAdapter extends RecyclerView.Adapter<AthleteListAdapter.
     //View Holder for AthleteListAdapter
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name;
-        ImageView pfp;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.athlete_list_name);
-            pfp = itemView.findViewById(R.id.athlete_list_pfp);
         }
     }
 }

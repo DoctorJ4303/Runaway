@@ -3,6 +3,8 @@
     <color name="blue_200">#006098</color>
     <color name="blue_500">#003A5C</color>
     <color name="blue_700">#00263C</color>
+    <color name="blue_700_transparent">#8000263C</color>
     <color name="black">#FF000000</color>
+    <color name="black_transparent">#80000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

@@ -5,14 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 
-import net.emhs.runaway.db.AppDatabase;
-import net.emhs.runaway.db.Workout;
-import net.emhs.runaway.util.MapConverter;
-
-import java.util.ArrayList;
-import java.util.List;
+import net.emhs.runaway.dialogs.QuickMenuDialog;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,8 +15,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        QuickMenuDialog dialog = new QuickMenuDialog(this);
+
+        findViewById(R.id.main_hamburger).setOnClickListener(v -> dialog.show());
+
+
         //Click listener for going to athlete list activity
-        findViewById(R.id.main_athlete_list).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), AthleteListActivity.class)));
-        findViewById(R.id.main_workout_list).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), WorkoutListActivity.class)));
+        findViewById(R.id.main_navigation_athlete_list).setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(), AthleteListActivity.class));
+            overridePendingTransition(R.anim.snap, R.anim.snap);
+        });
+        //findViewById(R.id.main_workout_list).setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), WorkoutListActivity.class)));
     }
 }

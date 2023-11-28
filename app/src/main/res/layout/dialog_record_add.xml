@@ -40,7 +40,6 @@
         android:layout_height="48dp"
         android:layout_marginStart="12dp"
         android:autofillHints=""
-        android:background="@drawable/sharp_corners"
         android:ems="10"
         android:gravity="center"
         android:hint="@string/distance"
@@ -60,7 +59,6 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="12dp"
         android:autofillHints=""
-        android:background="@drawable/sharp_corners"
         android:ems="10"
         android:gravity="center"
         android:hint="@string/time"
@@ -74,7 +72,6 @@
 
     <Button
         android:id="@+id/record_add_save"
-        style="@style/Theme.Runaway.ButtonSharp"
         android:layout_width="153dp"
         android:layout_height="50dp"
         android:layout_marginEnd="-2dp"
@@ -85,7 +82,6 @@
 
     <Button
         android:id="@+id/record_add_cancel"
-        style="@style/Theme.Runaway.ButtonSharp"
         android:layout_width="153dp"
         android:layout_height="50dp"
         android:layout_marginStart="-2dp"

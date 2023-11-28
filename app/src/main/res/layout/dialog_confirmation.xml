@@ -34,7 +34,6 @@
 
     <Button
         android:id="@+id/confirmation_confirm"
-        style="@style/Theme.Runaway.ButtonSharp"
         android:layout_width="153dp"
         android:layout_height="50dp"
         android:layout_marginEnd="-2dp"
@@ -45,7 +44,6 @@
 
     <Button
         android:id="@+id/confirmation_deny"
-        style="@style/Theme.Runaway.ButtonSharp"
         android:layout_width="153dp"
         android:layout_height="50dp"
         android:layout_marginStart="-2dp"

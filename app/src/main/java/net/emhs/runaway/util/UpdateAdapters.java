@@ -42,8 +42,8 @@ public class UpdateAdapters {
     }
 
     public static RecyclerView updateAthleteAdapter(Activity activity) {
-        RecyclerView athleteListView = activity.findViewById(R.id.athlete_list_recycler_view); // Sets dialog
-        AthleteListAdapter adapter = new AthleteListAdapter(activity.getApplicationContext()); /// New adapter
+        RecyclerView athleteListView = null; // Sets dialog
+        AthleteListAdapter adapter = new AthleteListAdapter(activity.getApplicationContext(), 0); /// New adapter
         AppDatabase db = AppDatabase.getDbInstance(activity.getApplicationContext()); // Sets AppDatabase instance
 
         athleteListView.setLayoutManager(new LinearLayoutManager(activity)); // Sets layout manager

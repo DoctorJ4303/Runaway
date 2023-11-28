@@ -57,8 +57,7 @@
         android:scaleType="fitCenter"
         android:onClick="back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back_arrow"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
 
 

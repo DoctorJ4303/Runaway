@@ -1,18 +1,19 @@
 package net.emhs.runaway;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import net.emhs.runaway.adapters.AthleteListAdapter;
 import net.emhs.runaway.db.AppDatabase;
 import net.emhs.runaway.db.Athlete;
 import net.emhs.runaway.dialogs.AthleteAddDialog;
 import net.emhs.runaway.dialogs.AthleteViewDialog;
-import net.emhs.runaway.util.RecyclerItemClickListener;
-import net.emhs.runaway.util.UpdateAdapters;
 
 public class AthleteListActivity extends AppCompatActivity {
 
@@ -23,12 +24,25 @@ public class AthleteListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_athlete_list);
 
-        this.db = AppDatabase.getDbInstance(getApplicationContext()); // Database object
+        AppDatabase db = AppDatabase.getDbInstance(getApplicationContext());
+
+        AthleteListAdapter adapter = new AthleteListAdapter(getApplicationContext(), 0);
+        RecyclerView list = findViewById(R.id.athlete_list_recycler_view);
+        list.setLayoutManager(new LinearLayoutManager(this));
+        list.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        list.setAdapter(adapter);
+
+        findViewById(R.id.athlete_list_navigation_home).setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            overridePendingTransition(R.anim.snap, R.anim.snap);
+        });
+
+        /*this.db = AppDatabase.getDbInstance(getApplicationContext()); // Database object
         RecyclerView athleteListView = UpdateAdapters.updateAthleteAdapter(this); // Initializes athlete list and sets it to a variable to add a click listener
 
         // Athlete list click listener. Checks if an athlete is clicked in the list
         athleteListView.addOnItemTouchListener(
-                new RecyclerItemClickListener(getApplicationContext(), (view, position) -> viewAthlete(db.athleteDao().getAllAthletes().get(position))));
+                new RecyclerItemClickListener(getApplicationContext(), (view, position) -> viewAthlete(db.athleteDao().getAllAthletes().get(position))));*/
 
     }
 

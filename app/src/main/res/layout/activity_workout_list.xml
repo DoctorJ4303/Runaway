@@ -29,7 +29,6 @@
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back_arrow"
         tools:ignore="DuplicateSpeakableTextCheck" />
 
     <TextView

@@ -37,83 +37,204 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/athlete_list_add_new"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toEndOf="@id/athlete_list_guideline_vertical_1"
+        app:layout_constraintEnd_toStartOf="@id/athlete_list_guideline_vertical_3"
+        app:layout_constraintTop_toBottomOf="@id/athlete_list_guideline_horizontal_5"
+        app:layout_constraintBottom_toTopOf="@id/athlete_list_guideline_horizontal_6"
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/blue_200">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/athlete_list_add_athlete_guideline_vertical_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".05" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/athlete_list_add_athlete_guideline_vertical_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".225" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/athlete_list_add_athlete_guideline_vertical_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".28125" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/athlete_list_add_athlete_guideline_vertical_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".78125" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/athlete_list_add_athlete_guideline_horizontal_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".22" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/athlete_list_add_athlete_guideline_horizontal_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".31" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/athlete_list_add_athlete_guideline_horizontal_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".69" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/athlete_list_add_athlete_guideline_horizontal_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".78" />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toEndOf="@id/athlete_list_add_athlete_guideline_vertical_1"
+            app:layout_constraintEnd_toStartOf="@id/athlete_list_add_athlete_guideline_vertical_2"
+            app:layout_constraintTop_toBottomOf="@id/athlete_list_add_athlete_guideline_horizontal_1"
+            app:layout_constraintBottom_toTopOf="@id/athlete_list_add_athlete_guideline_horizontal_4"
+            app:srcCompat="@drawable/plus_circle"/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:autoSizeTextType="uniform"
+            android:text="Add Athlete"
+            style="@style/Theme.Runaway.Text"
+            app:layout_constraintStart_toEndOf="@id/athlete_list_add_athlete_guideline_vertical_3"
+            app:layout_constraintEnd_toStartOf="@id/athlete_list_add_athlete_guideline_vertical_4"
+            app:layout_constraintTop_toBottomOf="@id/athlete_list_add_athlete_guideline_horizontal_2"
+            app:layout_constraintBottom_toTopOf="@id/athlete_list_add_athlete_guideline_horizontal_3"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="@id/athlete_list_guideline_vertical_1"
         app:layout_constraintEnd_toEndOf="@id/athlete_list_guideline_vertical_3"
         app:layout_constraintTop_toTopOf="@id/athlete_list_guideline_horizontal_3"
         app:layout_constraintBottom_toBottomOf="@id/athlete_list_guideline_horizontal_4"
-        android:backgroundTint="@color/blue_200"
-        android:background="@drawable/round_corners">
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/athlete_list_add_new_vertical_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="90dp" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/athlete_list_add_new_vertical_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="126dp" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/athlete_list_add_new_vertical_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="130dp" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/athlete_list_add_new_horizontal_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.083333336" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/athlete_list_add_new_horizontal_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.9166667" />
-
-
-        
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:srcCompat="@drawable/plus"
-            app:layout_constraintStart_toStartOf="@id/athlete_list_add_new_vertical_1"
-            app:layout_constraintEnd_toEndOf="@id/athlete_list_add_new_vertical_2"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+        android:background="@drawable/round_corners"
+        android:backgroundTint="@color/blue_700_transparent">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintStart_toStartOf="@id/athlete_list_add_new_vertical_3"
-            app:layout_constraintTop_toTopOf="@id/athlete_list_add_new_horizontal_1"
-            app:layout_constraintBottom_toBottomOf="@id/athlete_list_add_new_horizontal_2"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/athlete_list_info_guideline_vertical_1"
+            app:layout_constraintEnd_toEndOf="@id/athlete_list_info_guideline_vertical_2"
+            app:layout_constraintTop_toTopOf="@id/athlete_list_info_guideline_horizontal_1"
+            app:layout_constraintBottom_toBottomOf="@id/athlete_list_info_guideline_horizontal_2"
             android:autoSizeTextType="uniform"
-            android:text="Add New"
+            android:text="Looks like you don't have\nany athletes saved"
+            android:gravity="center"
             style="@style/Theme.Runaway.Text"/>
-        
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/athlete_list_info_guideline_horizontal_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.071428575" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/athlete_list_info_guideline_horizontal_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.9285714" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/athlete_list_info_guideline_vertical_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.0625" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/athlete_list_info_guideline_vertical_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9375" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/athlete_list_recycler_view"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/athlete_list_guideline_vertical_1"
-        app:layout_constraintEnd_toEndOf="@id/athlete_list_guideline_vertical_3"
-        app:layout_constraintTop_toTopOf="@id/athlete_list_guideline_horizontal_5"
-        app:layout_constraintBottom_toBottomOf="@id/athlete_list_guideline_horizontal_6"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/athlete_list_guideline_horizontal_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.01875" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/athlete_list_guideline_horizontal_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.0575" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/athlete_list_guideline_horizontal_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.0775" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/athlete_list_guideline_horizontal_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.165" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/athlete_list_guideline_horizontal_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.18375" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/athlete_list_guideline_horizontal_6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.30875" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/athlete_list_guideline_horizontal_11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.89" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/athlete_list_guideline_vertical_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.055555556" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/athlete_list_guideline_vertical_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.19444445" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/athlete_list_guideline_vertical_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9444444" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/athlete_list_navigation"
@@ -121,7 +242,7 @@
         android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/athlete_list_guideline_horizontal_6"
+        app:layout_constraintTop_toBottomOf="@id/athlete_list_guideline_horizontal_11"
         app:layout_constraintBottom_toBottomOf="parent"
         android:animateLayoutChanges="false">
 
@@ -278,69 +399,4 @@
             app:srcCompat="@drawable/notes_icon"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/athlete_list_guideline_horizontal_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.01875" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/athlete_list_guideline_horizontal_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.0575" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/athlete_list_guideline_horizontal_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.0775" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/athlete_list_guideline_horizontal_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1225" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/athlete_list_guideline_horizontal_5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.14125" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/athlete_list_guideline_horizontal_6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.89" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/athlete_list_guideline_vertical_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.055555556" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/athlete_list_guideline_vertical_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.19444445" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/athlete_list_guideline_vertical_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9444444" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

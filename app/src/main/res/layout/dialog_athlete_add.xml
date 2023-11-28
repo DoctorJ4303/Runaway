@@ -104,6 +104,6 @@
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="@+id/athlete_add_background"
         app:layout_constraintTop_toTopOf="@+id/athlete_add_background"
-        app:srcCompat="@drawable/x" />
+        app:srcCompat="@drawable/close" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
