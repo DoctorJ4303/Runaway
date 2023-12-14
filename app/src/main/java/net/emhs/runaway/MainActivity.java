@@ -43,11 +43,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }*/
 
-        QuickMenuDialog dialog = new QuickMenuDialog(this);
-
-        findViewById(R.id.main_hamburger).setOnClickListener(v -> dialog.show());
-
-
         //Click listener for going to athlete list activity
         findViewById(R.id.main_navigation_athlete_list).setOnClickListener(view -> {
             startActivity(new Intent(getApplicationContext(), AthleteListActivity.class));
