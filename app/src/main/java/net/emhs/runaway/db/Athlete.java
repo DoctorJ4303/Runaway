@@ -6,10 +6,11 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import net.emhs.runaway.util.MapConverter;
-import net.emhs.runaway.util.Time;
+import net.emhs.runaway.util.Converter;
 
+import java.text.ParseException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -17,7 +18,10 @@ import java.util.Map;
 public class Athlete {
 
     public Athlete() {
-        records = MapConverter.fromMap(new HashMap<>());
+        records = Converter.toString(new HashMap<>());
+        this.name = "Athlete";
+        this.description = "Description";
+        this.records = "{}";
     }
 
     @PrimaryKey(autoGenerate = true)
@@ -26,12 +30,14 @@ public class Athlete {
 
     @ColumnInfo(name="name")
     public String name;
+    @ColumnInfo(name="description")
+    public String description;
     @ColumnInfo(name="records")
     public String records;
 
-    public void addRecord(int distanceInput, @NonNull Time time) {
-        Map<Integer, Time> map = MapConverter.fromString(records);
-        map.put(distanceInput, time);
-        records = MapConverter.fromMap(map);
+    public void addRecord(int distanceInput, @NonNull String time) throws ParseException {
+        List<Record> recordList = Converter.toRecordList(records);
+        recordList.add(new Record(distanceInput, time));
+        records = Converter.toString(recordList);
     }
 }

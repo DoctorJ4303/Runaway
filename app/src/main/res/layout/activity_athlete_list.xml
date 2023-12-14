@@ -109,7 +109,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/athlete_list_recycler_view"
         android:layout_width="0dp"
+        android:clickable="false"
         android:layout_height="0dp"
+        android:descendantFocusability="afterDescendants"
         app:layout_constraintStart_toStartOf="@id/athlete_list_guideline_vertical_1"
         app:layout_constraintEnd_toEndOf="@id/athlete_list_guideline_vertical_3"
         app:layout_constraintTop_toTopOf="@id/athlete_list_guideline_horizontal_5"

@@ -5,17 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
-import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import net.emhs.runaway.adapters.ElementListAdapter;
-import net.emhs.runaway.adapters.TypeDropdownAdapter;
 import net.emhs.runaway.db.AppDatabase;
-import net.emhs.runaway.db.Element;
 import net.emhs.runaway.db.Workout;
-import net.emhs.runaway.util.MapConverter;
+import net.emhs.runaway.util.Converter;
 
 import java.util.ArrayList;
 
@@ -54,7 +51,7 @@ public class CreateWorkoutActivity extends AppCompatActivity {
         AppDatabase db = AppDatabase.getDbInstance(this.getApplicationContext());
         EditText name = findViewById(R.id.create_workout_name);
         adapter.updateElements();
-        db.workoutDoa().insertWorkout(new Workout(name.getText().toString(), MapConverter.fromList(adapter.getChildItem())));
+        db.workoutDoa().insertWorkout(new Workout(name.getText().toString(), Converter.toString(adapter.getChildItem())));
         startActivity(new Intent(getApplicationContext(), WorkoutListActivity.class));
     }
 

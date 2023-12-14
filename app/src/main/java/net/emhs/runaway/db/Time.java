@@ -1,4 +1,4 @@
-package net.emhs.runaway.util;
+package net.emhs.runaway.db;
 
 import androidx.annotation.NonNull;
 
@@ -31,7 +31,6 @@ public class Time {
         }
     }
 
-    // Checks format (Not the best system but it works)
     private int formatChecker(String format) {
         return format.contains(".") && format.contains(":") ? 1 : format.contains(".") ? 2 : -1;
     }

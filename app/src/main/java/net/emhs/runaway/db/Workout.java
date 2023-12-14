@@ -1,23 +1,18 @@
 package net.emhs.runaway.db;
 
-import android.sax.ElementListener;
-
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.itextpdf.layout.element.Cell;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.Table;
 
-import net.emhs.runaway.util.MapConverter;
-import net.emhs.runaway.util.Time;
+import net.emhs.runaway.util.Converter;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 @Entity(tableName = "workouts")
 public class Workout {
@@ -36,9 +31,9 @@ public class Workout {
         this.elements = elements;
     }
 
-    public Paragraph toTable(ArrayList<Athlete> athletes) throws ParseException, JsonProcessingException {
+    public Paragraph toTable(ArrayList<Athlete> athletes) {
         System.out.println(elements);
-        ArrayList<Element> elements = MapConverter.jsonToObject(this.elements);
+        ArrayList<Element> elements = Converter.toElementList(this.elements);
         Paragraph paragraph = new Paragraph();
         Table titleTable = new Table(1);
         float tableHeight = 0f;
@@ -54,7 +49,6 @@ public class Workout {
         table.addCell(new Cell().add(new Paragraph(" ")).setWidth(averageWidth).setHeight(20f));
 
         for (Element e : elements) {
-            System.out.println(e.distance);
             table.addCell(new Cell().add(new Paragraph(String.valueOf(e.distance))).setWidth(averageWidth).setHeight(20f));
         }
         tableHeight += 24;
@@ -93,12 +87,12 @@ public class Workout {
         ArrayList<Integer> lesser = new ArrayList<>();
         ArrayList<Integer> greater = new ArrayList<>();
 
-        for (int i : MapConverter.fromString(athlete.records).keySet()) {
+        /*for (int i : Converter.toMap(athlete.records).keySet()) {
             if (i<distance)
                 lesser.add(i);
             else
                 greater.add(i);
-        }
+        }*/
 
         Collections.sort(lesser);
         Collections.sort(greater);

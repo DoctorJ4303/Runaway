@@ -14,7 +14,7 @@ import androidx.annotation.Nullable;
 import net.emhs.runaway.R;
 import net.emhs.runaway.db.AppDatabase;
 import net.emhs.runaway.db.Athlete;
-import net.emhs.runaway.util.MapConverter;
+import net.emhs.runaway.util.Converter;
 import net.emhs.runaway.util.UpdateAdapters;
 
 public class AthleteAddDialog extends Dialog implements View.OnClickListener {
@@ -69,7 +69,7 @@ public class AthleteAddDialog extends Dialog implements View.OnClickListener {
                 }
                 break;
             case R.id.athlete_add_close: // Close
-                if (!nameInput.trim().isEmpty() || !MapConverter.fromString(athlete.records).isEmpty()) { // If there is saved records or the name input text is not empty
+                if (!nameInput.trim().isEmpty() || !Converter.toRecordList(athlete.records).isEmpty()) { // If there is saved records or the name input text is not empty
                     CloseDialog closeDialog = new CloseDialog(activity, this, "There is unsaved progress, are you sure you want to close?"); // Warning dialog
                     closeDialog.show();
                 }

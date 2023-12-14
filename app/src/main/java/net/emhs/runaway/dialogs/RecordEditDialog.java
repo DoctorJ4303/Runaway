@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import net.emhs.runaway.R;
 import net.emhs.runaway.db.Athlete;
-import net.emhs.runaway.util.MapConverter;
+import net.emhs.runaway.util.Converter;
 import net.emhs.runaway.util.RecyclerItemClickListener;
 import net.emhs.runaway.util.UpdateAdapters;
 
@@ -48,8 +48,7 @@ public class RecordEditDialog extends Dialog implements View.OnClickListener {
         // On click listener for individual records
         RecyclerView recyclerView = findViewById(R.id.record_edit_recycler_view);
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(activity, (view, position) -> {
-            System.out.println(new ArrayList<>(MapConverter.fromString(athlete.records).keySet()).get(position));
-            int distance = new ArrayList<>(MapConverter.fromString(athlete.records).keySet()).get(position);
+            int distance = Converter.toRecordList(athlete.records).get(position).distance;
             RecordDataEditDialog dataEditDialog = new RecordDataEditDialog(activity, athlete, RecordEditDialog.this, distance);
             dataEditDialog.show();
         }));

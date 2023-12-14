@@ -1,42 +1,25 @@
 package net.emhs.runaway;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.SeekBar;
-import android.widget.TextView;
 
-import com.google.android.material.slider.Slider;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfReader;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
-import com.itextpdf.layout.element.Cell;
-import com.itextpdf.layout.element.List;
-import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.element.Table;
-import com.itextpdf.pdfa.PdfADocument;
 
 import net.emhs.runaway.db.AppDatabase;
 import net.emhs.runaway.db.Athlete;
-import net.emhs.runaway.db.Element;
 import net.emhs.runaway.db.Workout;
 import net.emhs.runaway.util.RecyclerItemClickListener;
-import net.emhs.runaway.util.Time;
 import net.emhs.runaway.util.UpdateAdapters;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;

@@ -2,12 +2,15 @@ package net.emhs.runaway.util;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.GradientDrawable;
 
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import net.emhs.runaway.MainActivity;
 import net.emhs.runaway.R;
 import net.emhs.runaway.adapters.AthleteListAdapter;
 import net.emhs.runaway.adapters.RecordListAdapter;
@@ -21,7 +24,7 @@ import net.emhs.runaway.dialogs.RecordViewDialog;
 public class UpdateAdapters {
 
     public static void updateRecordAdapter(Dialog dialog, Athlete athlete) {
-        RecordListAdapter adapter = new RecordListAdapter(dialog.getContext()); // New RecordListAdapter
+        //RecordListAdapter adapter = new RecordListAdapter(dialog.getContext()); // New RecordListAdapter
         RecyclerView recordListView = null; // Initializes new RecyclerView
 
         // Sets dialog view based on class (RecordEditDialog or RecordAddDialog -> record_edit_recycler_view / RecordViewDialog -> record_view_recycler_view)
@@ -36,21 +39,21 @@ public class UpdateAdapters {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(dialog.getContext(), DividerItemDecoration.VERTICAL); // Creates new divider
         dividerItemDecoration.setDrawable(new ColorDrawable()); // Sets divider
         recordListView.addItemDecoration(dividerItemDecoration); // Adds divider
-        recordListView.setAdapter(adapter); // Sets RecyclerView's adapter
+        //recordListView.setAdapter(adapter); // Sets RecyclerView's adapter
 
-        adapter.setRecordMap(MapConverter.fromString(athlete.records)); // Sets map to adapter
+        //adapter.setRecordMap(Converter.fromString(athlete.records)); // Sets map to adapter
     }
 
     public static RecyclerView updateAthleteAdapter(Activity activity) {
         RecyclerView athleteListView = null; // Sets dialog
-        AthleteListAdapter adapter = new AthleteListAdapter(activity.getApplicationContext(), 0); /// New adapter
+        //AthleteListAdapter adapter = new AthleteListAdapter(activity.getApplicationContext()); /// New adapter
         AppDatabase db = AppDatabase.getDbInstance(activity.getApplicationContext()); // Sets AppDatabase instance
 
         athleteListView.setLayoutManager(new LinearLayoutManager(activity)); // Sets layout manager
         athleteListView.addItemDecoration(new DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)); // Creates a new divider
-        athleteListView.setAdapter(adapter); // Applies divider
+        //athleteListView.setAdapter(adapter); // Applies divider
 
-        adapter.setAthleteList(db.athleteDao().getAllAthletes()); // Sets list to athlete list from database
+        //adapter.setAthleteList(db.athleteDao().getAllAthletes()); // Sets list to athlete list from database
 
         return athleteListView;
     }
@@ -67,6 +70,14 @@ public class UpdateAdapters {
         adapter.setWorkoutList(db.workoutDoa().getAllWorkouts());
 
         return workoutListView;
+    }
+
+    public static DividerItemDecoration createVerticalDivider (Context context, double height) {
+        DividerItemDecoration divider = new DividerItemDecoration(context, DividerItemDecoration.VERTICAL);
+        GradientDrawable drawable = new GradientDrawable();
+        drawable.setSize(0,(int) (MainActivity.display.heightPixels*(height/752.0)));
+        divider.setDrawable(drawable);
+        return divider;
     }
 
 }

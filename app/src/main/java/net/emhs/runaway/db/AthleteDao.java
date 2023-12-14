@@ -28,6 +28,9 @@ public interface AthleteDao {
     @Query("UPDATE athletes SET name = :name WHERE uid = :uid")
     void updateName(String name, int uid);
 
+    @Query("UPDATE athletes SET description = :description WHERE uid = :uid")
+    void updateDescription(String description, int uid);
+
     // Updates records of athlete
     @Query("UPDATE athletes SET records = :records WHERE uid = :uid")
     void updateRecords(String records, int uid);

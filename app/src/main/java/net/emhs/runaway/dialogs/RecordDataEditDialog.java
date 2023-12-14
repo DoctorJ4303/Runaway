@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 import net.emhs.runaway.R;
 import net.emhs.runaway.db.Athlete;
-import net.emhs.runaway.util.MapConverter;
-import net.emhs.runaway.util.Time;
+import net.emhs.runaway.util.Converter;
+import net.emhs.runaway.db.Time;
 import net.emhs.runaway.util.UpdateAdapters;
 
 import java.text.ParseException;
@@ -42,7 +42,7 @@ public class RecordDataEditDialog extends Dialog implements View.OnClickListener
 
         // Sets time input hint to previous time
         EditText time = findViewById(R.id.record_edit_data_time);
-        time.setHint(Objects.requireNonNull(MapConverter.fromString(athlete.records).get(distanceKey)).toString());
+        //time.setHint(Objects.requireNonNull(Converter.toMap(athlete.records).get(distanceKey)).toString());
 
         // On click listeners for actions
         findViewById(R.id.record_edit_data_save).setOnClickListener(this);
@@ -65,14 +65,12 @@ public class RecordDataEditDialog extends Dialog implements View.OnClickListener
                     break;
                 }
                 try {
-                    athlete.addRecord(distanceKey, new Time(timeInput)); // Checks if time input is a valid time format
+                    //athlete.addRecord(distanceKey, new Time(timeInput)); // Checks if time input is a valid time format
                     UpdateAdapters.updateRecordAdapter(parentDialog, athlete); // Updates record list if it is valid
                     dismiss();
-                } catch (ParseException e) { // Shows warning and shakes dialog if time input is invalid
+                } catch (Exception e) { // Shows warning and shakes dialog if time input is invalid
                     Toast.makeText(activity.getApplicationContext(), "Invalid time format, use mm:ss.ms", Toast.LENGTH_SHORT).show();
                     findViewById(R.id.record_edit_data).startAnimation(AnimationUtils.loadAnimation(activity.getApplicationContext(), R.anim.shake));
-                    e.printStackTrace();
-                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;

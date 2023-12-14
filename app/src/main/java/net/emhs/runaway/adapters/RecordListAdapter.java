@@ -1,7 +1,8 @@
 package net.emhs.runaway.adapters;
 
-import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,39 +12,100 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import net.emhs.runaway.R;
-import net.emhs.runaway.util.Time;
+import net.emhs.runaway.db.AppDatabase;
+import net.emhs.runaway.db.Athlete;
+import net.emhs.runaway.db.Record;
+import net.emhs.runaway.util.Converter;
+import net.emhs.runaway.db.Time;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
-public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.MyViewHolder> {
+public class RecordListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private final Context context;
-    private Map<Integer, Time> records;
 
-    public RecordListAdapter(Context context) {
-        this.context = context;
+    public enum recordType {
+        VIEW,
+        EDIT
     }
+    private final AppDatabase db;
+    private final recordType type;
+    private final Context context;
+    private ArrayList<Record> records;
+    private Athlete athlete;
 
-    @SuppressLint("NotifyDataSetChanged")
-    public void setRecordMap(Map<Integer, Time> records) {
-        this.records = records;
-        notifyDataSetChanged();
+    public RecordListAdapter(Context context, Athlete athlete, recordType type) {
+        this.db = AppDatabase.getDbInstance(context.getApplicationContext());
+        this.context = context;
+        this.athlete = athlete;
+        this.records = Converter.toRecordList(athlete.records);
+        this.type = type;
     }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.record_list, parent, false); // Inflates list
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        return new MyViewHolder(view);
+        View view = LayoutInflater.from(context).inflate(R.layout.record_item_view, parent, false);
+        DisplayMetrics display = new DisplayMetrics();
+        ((Activity) context).getWindowManager().getDefaultDisplay().getMetrics(display);
+
+        switch (type) {
+            case VIEW:
+                view = LayoutInflater.from(context).inflate(R.layout.record_item_view, parent, false);
+                view.getLayoutParams().height = (int) (display.heightPixels * (26.0 / 752.0));
+                return new RecordViewViewHolder(view);
+            case EDIT:
+                view = LayoutInflater.from(context).inflate(R.layout.record_item_edit, parent, false);
+                view.getLayoutParams().height = (int) (display.heightPixels * (26.0 / 752.0));
+                return new RecordEditViewHolder(view);
+        }
+        return new RecordViewViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        // Sets distance inside inflated list
-        holder.distance.setText(context.getString(R.string.record_list_adapter_distance, new ArrayList<>(this.records.keySet()).get(position)));
-        holder.time.setText(new ArrayList<>(this.records.values()).get(position).toString()); // Sets time
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        ArrayList<Record> recordList = Converter.toRecordList(athlete.records);
+        switch (type) {
+            case VIEW:
+                RecordViewViewHolder recordViewHolder = (RecordViewViewHolder) holder;
+                recordViewHolder.distance.setText(String.valueOf(recordList.get(position).distance));
+                recordViewHolder.time.setText(recordList.get(position).pace);
+                break;
+            case EDIT:
+                RecordEditViewHolder recordEditHolder = (RecordEditViewHolder) holder;
+                recordEditHolder.distance.setText(String.valueOf(recordList.get(position).distance));
+                recordEditHolder.time.setText(recordList.get(position).pace);
+                break;
+        }
+    }
+
+    public void addNew() {
+        try {
+            records.add(0, new Record(testDistances(), "0:00.00"));
+            athlete.records = Converter.toString(records);
+            db.athleteDao().updateRecords(athlete.records, athlete.uid);
+            notifyDataSetChanged();
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private int testDistances () {
+        int[] distances = {55, 100, 200, 300, 400, 500, 800, 1000, 1600, 3200, 5000};
+        int maxDistance = 55;
+        ArrayList<Record> temp = new ArrayList<>(records);
+        for (int i = 0; i < distances.length-1; i++) {
+            for (Record r : records) {
+                if (r.distance==distances[i]) {
+                    maxDistance = distances[i+1];
+                    break;
+                }
+            }
+        }
+        return maxDistance;
     }
 
     @Override
@@ -51,15 +113,27 @@ public class RecordListAdapter extends RecyclerView.Adapter<RecordListAdapter.My
         return records==null ? 0 : this.records.size(); // Returns item count
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class RecordViewViewHolder extends RecyclerView.ViewHolder {
 
         TextView distance;
         TextView time;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public RecordViewViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.distance = itemView.findViewById(R.id.record_list_distance); // Finds distance text in inflated list
-            this.time = itemView.findViewById(R.id.record_list_time); // Finds time text
+            this.distance = itemView.findViewById(R.id.record_item_view_distance); // Finds distance text in inflated list
+            this.time = itemView.findViewById(R.id.record_item_view_time); // Finds time text
+        }
+    }
+
+    public static class RecordEditViewHolder extends RecyclerView.ViewHolder {
+
+        TextView distance;
+        TextView time;
+
+        public RecordEditViewHolder(@NonNull View itemView) {
+            super(itemView);
+            this.distance = itemView.findViewById(R.id.record_item_view_distance); // Finds distance text in inflated list
+            this.time = itemView.findViewById(R.id.record_item_view_time); // Finds time text
         }
     }
 }

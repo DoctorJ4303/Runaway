@@ -40,7 +40,6 @@ public class QuickMenuDialog extends Dialog implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        System.out.println(view.getId());
         switch (view.getId()) {
             case R.id.quick_menu_close:
                 this.dismiss();

@@ -19,16 +19,18 @@
             android:theme="@style/Theme.Runaway" />
         <activity
             android:name=".WorkoutListActivity"
-            android:exported="false">
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan">
             <meta-data
-                android:name="android.app.lib_name"
+                android:name="net.emhs.runaway"
                 android:value="" />
         </activity>
         <activity
             android:name=".AthleteListActivity"
-            android:exported="false">
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan">
             <meta-data
-                android:name="android.app.lib_name"
+                android:name="net.emhs.runaway"
                 android:value="" />
         </activity>
         <activity
@@ -41,7 +43,7 @@
             </intent-filter>
 
             <meta-data
-                android:name="android.app.lib_name"
+                android:name="net.emhs.runaway"
                 android:value="" />
         </activity>
     </application>
